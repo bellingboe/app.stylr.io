@@ -77,7 +77,7 @@ window.onload = function() {
     });
     
     $("#btn_gh").on("click", function(ev){
-        window.location = 'https://github.com/bellingboe/project-fluoro';
+        window.location = 'https://github.com/bellingboe/app.stylr.io';
     });
     
     $("#btn_new").on("click", function(ev){
