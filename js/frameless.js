@@ -29,7 +29,7 @@ window.onload = function() {
 	    window.BOXITEM.css({"left": new_x+"px"});
 	    setPosDisplay(window.BOXITEM.offset().top-35, new_x);
 	    
-	     if (mouseStillDown) { mouseInterval = setInterval(function(){ return mouseDownFunc(); }, 300); }
+	     if (mouseStillDown) { clearInterval(mouseInterval); mouseInterval = setInterval(function(){ return mouseDownFunc(); }, 50); }
 	};
 	
 	mouseDownFunc();
@@ -47,7 +47,7 @@ window.onload = function() {
 	    window.BOXITEM.css({"left": new_x+"px"});
 	    setPosDisplay(window.BOXITEM.offset().top-35, new_x);
 	
-	     if (mouseStillDown) { mouseInterval = setInterval(function(){ return mouseDownFunc(); }, 300); }
+	     if (mouseStillDown) { clearInterval(mouseInterval); mouseInterval = setInterval(function(){ return mouseDownFunc(); }, 50); }
 	};
 	
 	mouseDownFunc();
@@ -65,7 +65,7 @@ window.onload = function() {
 	    window.BOXITEM.css({"top": new_x+"px"});
 	    setPosDisplay(new_x, window.BOXITEM.offset().left-160);
 	    
-	     if (mouseStillDown) { mouseInterval = setInterval(function(){ return mouseDownFunc(); }, 300); }
+	     if (mouseStillDown) { clearInterval(mouseInterval); mouseInterval = setInterval(function(){ return mouseDownFunc(); }, 50); }
 	};
 	
 	mouseDownFunc();
@@ -83,7 +83,7 @@ window.onload = function() {
 	    window.BOXITEM.css({"top": new_x+"px"});
 	    setPosDisplay(new_x, window.BOXITEM.offset().left-160);
 	    
-	     if (mouseStillDown) { mouseInterval = setInterval(function(){ return mouseDownFunc(); }, 300); }
+	     if (mouseStillDown) { clearInterval(mouseInterval); mouseInterval = setInterval(function(){ return mouseDownFunc(); }, 50); }
 	};
 	
 	mouseDownFunc();
@@ -95,39 +95,75 @@ window.onload = function() {
     /* ================================================= */
     
     $(".tools").on("mousedown", ".size-add-w", function(ev){
-        mouseStillDown = true;
-        var new_x = window.BOXITEM.outerWidth() + 1;
-        window.BOXITEM.css({"width": new_x+"px"});
-        setSizeDisplay(window.BOXITEM.outerHeight(), new_x);
+	mouseStillDown = true;
+	mouseDownFunc = function() {
+	    if (!mouseStillDown) { return; }
+	    
+	    var new_x = window.BOXITEM.outerWidth() + 1;
+	    window.BOXITEM.css({"width": new_x+"px"});
+	    setSizeDisplay(window.BOXITEM.outerHeight(), new_x);
+	    
+	     if (mouseStillDown) { clearInterval(mouseInterval); mouseInterval = setInterval(function(){ return mouseDownFunc(); }, 50); }
+	};
+	
+	mouseDownFunc();
     }).mouseup(function(event) {
 	mouseStillDown = false;
+	clearInterval(mouseInterval);
     });
     
     $(".tools").on("mousedown", ".size-add-h", function(ev){
-        mouseStillDown = true;
-        var new_x = window.BOXITEM.outerHeight() + 1;
-        window.BOXITEM.css({"height": new_x+"px"});
-        setSizeDisplay(new_x, window.BOXITEM.outerWidth());
+	mouseStillDown = true;
+	mouseDownFunc = function() {
+	    if (!mouseStillDown) { return; }
+	    
+	    var new_x = window.BOXITEM.outerHeight() + 1;
+	    window.BOXITEM.css({"height": new_x+"px"});
+	    setSizeDisplay(new_x, window.BOXITEM.outerWidth());
+	    
+	     if (mouseStillDown) { clearInterval(mouseInterval); mouseInterval = setInterval(function(){ return mouseDownFunc(); }, 50); }
+	};
+	
+	mouseDownFunc();
     }).mouseup(function(event) {
 	mouseStillDown = false;
+	clearInterval(mouseInterval);
     });
     
     $(".tools").on("mousedown", ".size-sub-w", function(ev){
-        mouseStillDown = true;
-        var new_x = window.BOXITEM.outerWidth() - 1;
-        window.BOXITEM.css({"width": new_x+"px"});
-        setSizeDisplay(window.BOXITEM.outerHeight(), new_x);
+	mouseStillDown = true;
+	mouseDownFunc = function() {
+	    if (!mouseStillDown) { return; }
+	    
+	    var new_x = window.BOXITEM.outerWidth() - 1;
+	    window.BOXITEM.css({"width": new_x+"px"});
+	    setSizeDisplay(window.BOXITEM.outerHeight(), new_x);
+	    
+	     if (mouseStillDown) { clearInterval(mouseInterval); mouseInterval = setInterval(function(){ return mouseDownFunc(); }, 50); }
+	};
+	
+	mouseDownFunc();
     }).mouseup(function(event) {
 	mouseStillDown = false;
+	clearInterval(mouseInterval);
     });
     
     $(".tools").on("mousedown", ".size-sub-h", function(ev){
-        mouseStillDown = true;
-        var new_x = window.BOXITEM.outerHeight() - 1;
-        window.BOXITEM.css({"height": new_x+"px"});
-        setSizeDisplay(new_x, window.BOXITEM.outerWidth());
+	mouseStillDown = true;
+	mouseDownFunc = function() {
+	    if (!mouseStillDown) { return; }
+	    
+	    var new_x = window.BOXITEM.outerHeight() - 1;
+	    window.BOXITEM.css({"height": new_x+"px"});
+	    setSizeDisplay(new_x, window.BOXITEM.outerWidth());
+	    
+	     if (mouseStillDown) { clearInterval(mouseInterval); mouseInterval = setInterval(function(){ return mouseDownFunc(); }, 50); }
+	};
+	
+	mouseDownFunc();
     }).mouseup(function(event) {
 	mouseStillDown = false;
+	clearInterval(mouseInterval);
     });
     
     $("#btn_gh").on("click", function(ev){
