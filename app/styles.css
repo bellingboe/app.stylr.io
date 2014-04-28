@@ -1,0 +1,417 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    -webkit-user-select: none;
+    cursor: default;
+}
+
+html {
+  margin: 0px;
+  padding: 0px;
+  overflow: hidden;
+}
+
+::-webkit-scrollbar {
+    width: 12px;
+}
+::-webkit-scrollbar-track {
+    background-color: #ADADAD;
+}
+::-webkit-scrollbar-thumb {
+    background-color: rgba(0,0,0,0.5);
+}
+::-webkit-scrollbar-thumb:hover {
+    background-color: rgba(0,0,0,0.6);
+}
+
+body {
+    margin: 0px;
+    padding: 0px;
+    background-color: rgba(222, 222, 222, 0.7);
+    background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAAKCAYAAACNMs+9AAAAJUlEQVQYV2M8efLkfwY0YG5uzoguxjgUFKI7GsTH5m4M3w1ChQDL9iTNLhPUIAAAAABJRU5ErkJggg==);
+    font-family: 'Open Sans', sans-serif;
+}
+
+.scene-text, .scene-disc {
+    position: absolute;
+    z-index:1;
+    width: 100%;
+    text-align: center;
+    top: 40px;
+    color: white;
+    text-shadow: 1px 1px 3px rgba(119, 119, 119, 0.4);
+    font-size: 46pt;
+    color: rgb(36, 68, 143);
+  -webkit-user-select: none;
+  -webkit-app-region: drag;
+}
+
+.scene-disc {
+    color: grey;
+    font-size: 28pt;
+    top: 150px;
+}
+
+.scene-screen {
+    position: absolute;
+    width:100%;
+    height:100%;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 0;
+    display: block;
+    background: rgba(255, 255, 255, 0.6) url(scene.png);
+    background-position: center;
+    background-repeat: no-repeat;
+  -webkit-user-select: none;
+}
+
+.footer {
+    box-shadow: inset 0 0 4px 0 rgba(0, 0, 0, 0.4) , 1px 1px 3px 0 rgba(119, 119, 119, 0.6);
+    background: rgba(169, 28, 93, 1.0);
+    border-top: 1px solid #971551;
+    color: #fff;
+    cursor: pointer;
+    bottom: 0;
+    font-size: 9pt;
+    font-weight: 600;
+    padding:10px;
+    text-align:center;
+    position: fixed;
+    left: 45%;
+    width: 180px;
+    display: none;
+}
+
+.footer .descr {
+    display: none;
+    font-size: 8pt;
+    font-weight: 300;
+    opacity: 0.8;
+}
+
+.footer-top {
+    box-shadow: inset 0 0 4px 0 rgba(0, 0, 0, 0.4) , 1px 1px 3px 0 rgba(119, 119, 119, 0.6);
+    background: #49b62f;
+    border-bottom: 1px solid #389124;
+    top: 35px;
+    color: #fff;
+    cursor: pointer;
+    font-size: 9pt;
+    font-weight: 600;
+    padding:10px;
+    text-align:center;
+    position: fixed;
+    left: 0;
+    width: 160px;
+    display: none;
+}
+
+.btn-large {
+    display: block;
+    cursor: pointer;
+    width: 40%;
+    margin-left: 30%;
+    height: 65px;
+    color: #fff;
+    line-height: 65px;
+    text-align: center;
+    background: rgb(92, 214, 32);
+    box-shadow: inset 0 0 4px 0 rgba(0, 0, 0, 0.4) , 1px 1px 3px 0 rgba(119, 119, 119, 0.6);
+    font-weight:600;
+    text-shadow: 1px 1px 3px rgba(119, 119, 119, 0.4);
+    font-size: 16pt;
+    z-index: 100;
+    position: absolute;
+}
+
+.btn-large:active {
+    background: #56c121;
+    box-shadow: inset 0 0 4px 0 rgba(0, 0, 0, 0.4), inset 0 4px 8px 0 rgba(0, 0, 0, 0.3)
+}
+
+.btn-new  {
+        top: 300px;
+        background: rgb(92, 214, 32);
+}
+
+.btn-new:active {
+    background: #56c121;
+    box-shadow: inset 0 0 4px 0 rgba(0, 0, 0, 0.4), inset 0 4px 8px 0 rgba(0, 0, 0, 0.3)
+}
+
+.btn-gh {
+        top: 400px;
+        background: #283b4e;
+}
+
+.btn-gh:active {
+    background: #1c2b3b;
+    box-shadow: inset 0 0 4px 0 rgba(0, 0, 0, 0.4), inset 0 4px 8px 0 rgba(0, 0, 0, 0.3)
+}
+
+.app-by {
+    width: 100%;
+    padding: 10px;
+    text-align: center;
+    color: rgba(0, 0, 0, 0.6);
+    position: absolute;
+    bottom: 0;
+    font-size:12pt;
+    margin-top:15px;
+    background: url(bar.png) repeat-x;
+    background-position: bottom;
+    font-weight:600;
+    text-shadow: 1px 1px 3px rgba(119, 119, 119, 0.4);
+}
+
+.bg-prev {
+    cursor: pointer;
+}
+
+.tools {
+    display: none;
+    position: fixed;
+    top: 35px;
+    left: -160px;
+    bottom:0;
+    width: 160px;
+    padding: 8px;
+    overflow-y: auto;
+    background: rgba(0, 0, 0, 0.1);
+    overflow-x: hidden;
+    padding-bottom:40px;
+    padding-top:45px;
+    
+}
+
+.tool-box {
+    cursor: default;
+    border-radius: 4px;
+    padding: 5px;
+    overflow: auto;
+    height: auto;
+    padding-bottom: 8px;
+    width: 140px;
+    border: 1px solid transparent;
+}
+
+.tool-box.box-open {
+    background: rgb(36, 68, 143);
+    box-shadow: 0px 1px 4px rgb(48, 48, 48);
+    border: 1px solid rgb(36, 68, 143);
+    margin-bottom:8px;
+}
+
+.tool-box .title {
+    width:100%;
+    display: block;
+    border-radius: 4px;
+    text-transform: uppercase;
+    color: #fff;
+    padding: 5px;
+    text-align: center;
+    font-size: 9pt;
+    font-weight:600;
+    cursor: pointer;
+    background-color: rgb(53, 106, 230);
+    border: 1px solid rgb(36, 68, 143);
+}
+
+.tool-item {
+    margin-top: 5px;
+}
+
+.tool-position .tool-item {
+    line-height: 25px;
+}
+
+.tool-box .btn-tool {
+    display: inline-block;
+    color: #fff;
+    min-width: 25px;
+    min-height: 25px;
+    line-height: 25px;
+    margin-left:4px;
+    text-align: center;
+    font-size: 14pt;
+    cursor: pointer;
+    background-color: rgb(53, 106, 230);
+    border: 1px solid rgb(36, 68, 143);
+}
+
+.bg-prev {
+    float:left;
+    display: inline-block;
+    width: 25px;
+    height: 25px;
+    margin-right: 4px;
+    border: 1px solid rgba(0, 0, 0, 0.4);
+}
+
+.btn-tool.btn-med {
+    padding: 0px;
+    font-size: 9pt;
+    display:inline-block;
+    float:left;
+    padding-left: 5px;
+    padding-right: 5px;
+}
+
+.tool-box .btn-tool:active {
+    opacity: 0.7;
+}
+
+.tool-box .na {
+    display: block;
+    padding: 4px;
+    font-size: 9pt;
+    color: #fff;
+}
+
+.tool-box .tool-content {
+    padding: 4px;
+    display: none;
+    font-size: 9pt;
+    color: #fff;
+}
+
+.tool-box .box-open .tool-content {
+    display: block;
+}
+
+.edit-box {
+    display: block;
+    background: #fff;
+    box-shadow: 1px 0 13px rgb(46, 46, 46);
+    border: 0;
+    width: 200px;
+    height: 200px;
+    left: 100px;
+    top: 100px;
+    position: relative;
+    
+}
+
+div#content {
+    margin: 0px;
+    padding: 0px;
+    top:35px;
+    right:0;
+    left:0;
+    overflow:auto;
+    bottom: 0;
+}
+
+.top-titlebar {
+    z-index:5;
+    position: absolute;
+    left: 0px;
+    top: 0px;
+    width: 100%;
+    height: 35px;
+    background-color: transparent;
+    -webkit-user-select: none;
+    -webkit-app-region: drag;
+    box-shadow: none;
+    border: 0;
+}
+
+.top-titlebar.app-title {
+    z-index:5;
+    position: absolute;
+    left: 0px;
+    top: 0px;
+    width: 100%;
+    height: 35px;
+    background-color: rgb(53, 106, 230);
+    -webkit-user-select: none;
+    -webkit-app-region: drag;
+    /*box-shadow: 0px 1px 4px rgb(48, 48, 48);*/
+    border: 1px solid rgb(36, 68, 143);
+}
+
+.top-titlebar-icon {
+  position: absolute;
+  left: -9000px;
+  margin-top: 0;
+  margin-bottom: 0;
+  width: 35px;
+  height: 35px;
+}
+
+.top-titlebar-icon.app-title {
+  position: absolute;
+  left: 0;
+  margin-top: 0;
+  margin-bottom: 0;
+  width: 35px;
+  height: 35px;
+}
+
+.top-titlebar-text {
+  position: absolute;
+  left: 35px;
+  width: 80%;
+  margin-top: 6px;
+  margin-bottom: 6px;
+  text-align:center;
+  font-size: 11pt;
+  color: #000;
+}
+
+.top-titlebar-text.app-title {
+  position: absolute;
+  left: 35px;
+  width: 80%;
+  margin-top: 6px;
+  margin-bottom: 6px;
+  text-align:center;
+  font-size: 11pt;
+  color: #ffffff;
+}
+
+.top-titlebar-close-button {
+  position: absolute;
+  color: rgb(219, 63, 63);
+  right: 0px;
+  width: 35px;
+  height: 33px;
+  margin-top: 0;
+  margin-bottom: 0;
+  cursor: pointer;
+  -webkit-app-region: no-drag;
+  background: url(button_close_hover.png);
+}
+
+.top-titlebar-close-button img {
+display: none;
+}
+
+.top-titlebar-close-button.app-title {
+  position: absolute;
+  color: rgb(219, 63, 63);
+  right: 0px;
+  width: 35px;
+  height: 33px;
+  margin-top: 0;
+  margin-bottom: 0;
+  cursor: pointer;
+  -webkit-app-region: no-drag;
+}
+
+.top-titlebar-close-button.app-title img {
+  cursor: pointer;
+  -webkit-app-region: no-drag;
+}
+
+.top-titlebar-divider {
+  position: absolute;
+  left: 0px;
+  top: 34px;
+  width: 0;
+  height: 0;
+}

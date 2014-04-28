@@ -1,0 +1,30 @@
+<!doctype html>
+<html>
+    <head>
+        <title>loading app...</title>
+        <link rel="icon" href="/stylr/app/ico.ico">
+        <script src="/stylr/js/jquery-2.1.0.min.js"></script>
+        <style>
+            .hide {
+                position: absolute;
+                left: -999px;
+            }
+            body, html {
+                overflow: hidden;
+            }
+        </style>
+    </head>
+    <body>
+        <a id='activateRedirect' class='hide' href='/app/'>[go]</a>
+        
+        <script>
+            $(function(){
+                $('#activateRedirect').on('click', function(){
+                        window.location = $('#activateRedirect').attr('href');
+                });
+
+                $("#activateRedirect").trigger("click");
+            });
+        </script>
+    </body>
+</html>
