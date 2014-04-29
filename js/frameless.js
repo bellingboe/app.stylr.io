@@ -166,6 +166,16 @@ window.onload = function() {
 	clearInterval(mouseInterval);
     });
     
+    $(".tools").on("mousedown", ".bord-add", function(ev){
+	    var border = parseInt(window.BOXITEM.css("borderWidth").replace("px", ""), 10) + 1;
+	    setBorderDisplay(border, window.BOXITEM.css("borderColor"));
+    });
+    
+    $(".tools").on("mousedown", ".bord-sub", function(ev){
+	    var border = parseInt(window.BOXITEM.css("borderWidth").replace("px", ""), 10) - 1;
+	    setBorderDisplay(border, window.BOXITEM.css("borderColor"));
+    });
+    
     $("#btn_gh").on("click", function(ev){
         window.location = 'https://github.com/bellingboe/app.stylr.io';
     });
@@ -196,7 +206,7 @@ window.onload = function() {
         $("#content").animate({"left": "160px"}, {queue: false});
         $(".tools").animate({"left": "0px"}, {queue: false, complete: function(){
             $(".footer").fadeIn();
-            $(".footer-top").fadeIn();
+            //$(".footer-top").fadeIn();
             $("#content").css({"position": "absolute"});
             var box = $("<div>").hide().appendTo($("#content")).fadeIn();
             setActiveBox(box);
@@ -230,6 +240,21 @@ window.onload = function() {
 	},
 	onChange: function (hsb, hex, rgb) {
             setLayerColor(hex, "#");
+	}
+    });
+    
+    $('#border_color_prev').ColorPicker({
+	color: '#000',
+	onShow: function (colpkr) {
+		$(colpkr).fadeIn(500);
+		return false;
+	},
+	onHide: function (colpkr) {
+		$(colpkr).fadeOut(500);
+		return false;
+	},
+	onChange: function (hsb, hex, rgb) {
+	    setBorderDisplay(window.BOXITEM.css('borderWidth').replace("px", ""), hex, "#");
 	}
     });
 

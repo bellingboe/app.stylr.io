@@ -12,6 +12,7 @@ function setActiveBox(b) {
   setSizeDisplay(b.outerHeight(),b.outerWidth());
   setBGDisplay(b.css('backgroundColor'));
   setLayerColor(b.css('backgroundColor'));
+  setBorderDisplay(b.css('borderWidth').replace("px", ""), b.css('borderColor'));
 }
 
 function setPosDisplay(t,l) {
@@ -38,6 +39,21 @@ function setLayerColor(hex, hash) {
   $('#color_prev').css('backgroundColor', color);
   window.BOXITEM.css('backgroundColor', color);
   $('.bg-text').html(color);
+}
+
+function setBorderDisplay(size, hex, hash) {
+  if ("undefined" !== typeof hash) {
+    var color = hash + hex;
+  } else {
+    var color = hex;
+  }
+  
+  $('#border_color_prev').css('backgroundColor', color);
+  window.BOXITEM.css('border-width', size + "px");
+  window.BOXITEM.css('border-color', color);
+  window.BOXITEM.css('border-style', "solid");
+  $('.bord-text').html(color);
+  $('.bord-width').html(size);
 }
 
 function updateImageUrl(image_id, new_image_url) {

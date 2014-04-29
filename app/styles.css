@@ -168,7 +168,7 @@ body {
     text-shadow: 1px 1px 3px rgba(119, 119, 119, 0.4);
 }
 
-.bg-prev {
+.bg-prev, .border-prev {
     cursor: pointer;
 }
 
@@ -184,7 +184,7 @@ body {
     background: #232f3f;
     overflow-x: hidden;
     padding-bottom:10px;
-    padding-top:45px;
+    padding-top: 10px;
     
 }
 
@@ -243,7 +243,7 @@ body {
     border: 1px solid rgb(36, 68, 143);
 }
 
-.bg-prev {
+.bg-prev, .border-prev {
     float:left;
     display: inline-block;
     width: 25px;
