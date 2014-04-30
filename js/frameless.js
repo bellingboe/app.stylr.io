@@ -180,6 +180,10 @@ window.onload = function() {
         window.location = 'https://github.com/bellingboe/app.stylr.io';
     });
     
+    $("#btn_twt").on("click", function(ev){
+        window.location = 'https://twitter.com/NerdWhoCodes';
+    });
+    
     $("#btn_new").on("click", function(ev){
         $(this).fadeOut();
         $("#btn_gh").fadeOut();

@@ -130,17 +130,17 @@ body {
 
 .btn-large:active {
     background: #56c121;
-    box-shadow: inset 0 0 4px 0 rgba(0, 0, 0, 0.4), inset 0 4px 8px 0 rgba(0, 0, 0, 0.3)
+    box-shadow: inset 0 0 4px 0 rgba(0, 0, 0, 0.4), inset 0 4px 8px 0 rgba(0, 0, 0, 0.3);
 }
 
 .btn-new  {
-        top: 300px;
-        background: rgb(92, 214, 32);
+    top: 300px;
+    background: rgb(92, 214, 32);
 }
 
 .btn-new:active {
     background: #56c121;
-    box-shadow: inset 0 0 4px 0 rgba(0, 0, 0, 0.4), inset 0 4px 8px 0 rgba(0, 0, 0, 0.3)
+    box-shadow: inset 0 0 4px 0 rgba(0, 0, 0, 0.4), inset 0 4px 8px 0 rgba(0, 0, 0, 0.3);
 }
 
 .btn-gh {
@@ -150,7 +150,17 @@ body {
 
 .btn-gh:active {
     background: #1c2b3b;
-    box-shadow: inset 0 0 4px 0 rgba(0, 0, 0, 0.4), inset 0 4px 8px 0 rgba(0, 0, 0, 0.3)
+    box-shadow: inset 0 0 4px 0 rgba(0, 0, 0, 0.4), inset 0 4px 8px 0 rgba(0, 0, 0, 0.3);
+}
+
+.btn-twt {
+    top: 500px;
+    background: rgb(53, 106, 230);
+}
+
+.btn-twt:active {
+    background: #2d61da;
+    box-shadow: inset 0 0 4px 0 rgba(0, 0, 0, 0.4), inset 0 4px 8px 0 rgba(0, 0, 0, 0.3);
 }
 
 .app-by {
