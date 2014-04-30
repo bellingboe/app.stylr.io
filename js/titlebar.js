@@ -13,6 +13,7 @@ function setActiveBox(b) {
   setBGDisplay(b.css('backgroundColor'));
   setLayerColor(b.css('backgroundColor'));
   setBorderDisplay(b.css('borderWidth').replace("px", ""), b.css('borderColor'));
+  setCornerRadiusDisplay(b.css('borderRadius').replace("px", ""));
 }
 
 function setPosDisplay(t,l) {
@@ -55,6 +56,12 @@ function setBorderDisplay(size, hex, hash) {
   $('.bord-text').html(color);
   $('.bord-width').html(size);
 }
+
+function setCornerRadiusDisplay(cr) {
+  $(".corner-width").html(cr);
+}
+
+/* ========================== */
 
 function updateImageUrl(image_id, new_image_url) {
   var image = document.getElementById(image_id);

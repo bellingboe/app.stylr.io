@@ -176,6 +176,18 @@ window.onload = function() {
 	    setBorderDisplay(border, window.BOXITEM.css("borderColor"));
     });
     
+    $(".tools").on("mousedown", ".corner-add", function(ev){
+	    var border = parseInt(window.BOXITEM.css("borderRadius").replace("px", ""), 10) + 1;
+	    window.BOXITEM.css("borderRadius", border + "px");
+	    setCornerRadiusDisplay(border);
+    });
+    
+    $(".tools").on("mousedown", ".corner-sub", function(ev){
+	    var border = parseInt(window.BOXITEM.css("borderRadius").replace("px", ""), 10) - 1;
+	    window.BOXITEM.css("borderRadius", border + "px");
+	    setCornerRadiusDisplay(border);
+    });
+    
     $("#btn_gh").on("click", function(ev){
         window.location = 'https://github.com/bellingboe/app.stylr.io';
     });
@@ -187,6 +199,7 @@ window.onload = function() {
     $("#btn_new").on("click", function(ev){
         $(this).fadeOut();
         $("#btn_gh").fadeOut();
+	$("#btn_twt").fadeOut();
         
         $(".top-titlebar").css({"top": "-35px"});
         $(".top-titlebar-text").addClass("app-title");
