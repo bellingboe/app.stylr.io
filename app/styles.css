@@ -435,6 +435,11 @@ display: none;
     width: 0;
     position: absolute;
 }
+.is-dragging {
+    cursor: -moz-grabbing;
+    cursor: -webkit-grabbing;
+    cursor: grabbing;
+}
 
 .handle.h-top {
     border-top: 2px dotted rgba(0, 0, 0, 0.6);

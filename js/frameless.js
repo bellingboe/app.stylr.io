@@ -20,10 +20,31 @@ window.onload = function() {
         $(this).children(".descr").slideToggle();
     });
     
-    $("body").on("mousedown", ".edit-box", function(ev){
-	setActiveBox($(this));
+    $("body").on("click", ".edit-box", function(ev){
+	if ($(this).attr("id") !== window.BOXITEM.attr("id")) {
+	    setActiveBox($(this));
+	}
+    }).on("mouseup", function() {
+	isMovingLayer = false;
+	$("body").removeClass("is-dragging");
+	$(".handle").removeClass("is-dragging");
+    }).on("mousedown", ".h-top", function(ev){
+	isMovingLayer = true;
+    }).on("mousedown", ".h-bottom", function(ev){
+	isMovingLayer = true;
+    }).on("mousedown", ".h-left", function(ev){
+	isMovingLayer = true;
+    }).on("mousedown", ".h-right", function(ev){
+	isMovingLayer = true;
+    }).on("mousemove", function(e) {
+	if (isMovingLayer) {
+	    $("body").addClass("is-dragging");
+	    $(".handle").addClass("is-dragging");
+	}
     });
     
+    
+
     $(".tools").on("mousedown", ".pos-add-x", function(ev){
 	mouseStillDown = true;
 	mouseDownFunc = function() {
@@ -246,6 +267,7 @@ window.onload = function() {
             //$(".footer-top").fadeIn();
             $("#content").css({"position": "absolute"});
             var box = $("<div>").hide().appendTo($("#content")).fadeIn();
+	    layerCount++;
             setActiveBox(box);
         }});
         
