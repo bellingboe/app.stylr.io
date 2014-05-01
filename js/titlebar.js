@@ -12,9 +12,21 @@ function closeWindow() {
   window.close();
 }
 
+function boxResizeEvt() {
+  $.event.trigger({
+    type: "layerResize",
+    message: "true",
+    time: new Date()
+  });
+}
+
 function setActiveBox(b) {
   window.BOXITEM = b;
   b.addClass("edit-box");
+  
+  window.BOXITEM.on("layerResize", function(e){
+    setTransformHandles();
+  });
 
   setPosDisplay(b.offset().top-35,b.offset().left-160);
   setSizeDisplay(b.outerHeight(),b.outerWidth());
@@ -22,6 +34,7 @@ function setActiveBox(b) {
   setLayerColor(b.css('backgroundColor'));
   setBorderDisplay(b.css('borderWidth').replace("px", ""), b.css('borderColor'));
   setCornerRadiusDisplay(b.css('borderRadius').replace("px", ""));
+  setTransformHandles();
 }
 
 function setPosDisplay(t,l) {
@@ -67,6 +80,10 @@ function setBorderDisplay(size, hex, hash) {
 
 function setCornerRadiusDisplay(cr) {
   $(".corner-width").html(cr);
+}
+
+function setTransformHandles() {
+  
 }
 
 /* ========================== */

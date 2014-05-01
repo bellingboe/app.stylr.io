@@ -20,6 +20,10 @@ window.onload = function() {
         $(this).children(".descr").slideToggle();
     });
     
+    $("body").on("mousedown", ".edit-box", function(ev){
+	setActiveBox($(this));
+    });
+    
     $(".tools").on("mousedown", ".pos-add-x", function(ev){
 	mouseStillDown = true;
 	mouseDownFunc = function() {
@@ -28,6 +32,7 @@ window.onload = function() {
 	    var new_x = (window.BOXITEM.offset().left - 160) + 1;
 	    window.BOXITEM.css({"left": new_x+"px"});
 	    setPosDisplay(window.BOXITEM.offset().top-35, new_x);
+	    boxResizeEvt();
 	    
 	     if (mouseStillDown) { clearInterval(mouseInterval); mouseInterval = setInterval(function(){ return mouseDownFunc(); }, 50); }
 	};
@@ -46,6 +51,7 @@ window.onload = function() {
 	    var new_x = (window.BOXITEM.offset().left - 160) - 1;
 	    window.BOXITEM.css({"left": new_x+"px"});
 	    setPosDisplay(window.BOXITEM.offset().top-35, new_x);
+	    boxResizeEvt();
 	
 	     if (mouseStillDown) { clearInterval(mouseInterval); mouseInterval = setInterval(function(){ return mouseDownFunc(); }, 50); }
 	};
@@ -64,6 +70,7 @@ window.onload = function() {
 	    var new_x = (window.BOXITEM.offset().top - 35) + 1;
 	    window.BOXITEM.css({"top": new_x+"px"});
 	    setPosDisplay(new_x, window.BOXITEM.offset().left-160);
+	    boxResizeEvt();
 	    
 	     if (mouseStillDown) { clearInterval(mouseInterval); mouseInterval = setInterval(function(){ return mouseDownFunc(); }, 50); }
 	};
@@ -82,6 +89,7 @@ window.onload = function() {
 	    var new_x = (window.BOXITEM.offset().top - 35) - 1;
 	    window.BOXITEM.css({"top": new_x+"px"});
 	    setPosDisplay(new_x, window.BOXITEM.offset().left-160);
+	    boxResizeEvt();
 	    
 	     if (mouseStillDown) { clearInterval(mouseInterval); mouseInterval = setInterval(function(){ return mouseDownFunc(); }, 50); }
 	};
@@ -102,6 +110,7 @@ window.onload = function() {
 	    var new_x = window.BOXITEM.outerWidth() + 1;
 	    window.BOXITEM.css({"width": new_x+"px"});
 	    setSizeDisplay(window.BOXITEM.outerHeight(), new_x);
+	    boxResizeEvt();
 	    
 	     if (mouseStillDown) { clearInterval(mouseInterval); mouseInterval = setInterval(function(){ return mouseDownFunc(); }, 50); }
 	};
@@ -120,6 +129,7 @@ window.onload = function() {
 	    var new_x = window.BOXITEM.outerHeight() + 1;
 	    window.BOXITEM.css({"height": new_x+"px"});
 	    setSizeDisplay(new_x, window.BOXITEM.outerWidth());
+	    boxResizeEvt();
 	    
 	     if (mouseStillDown) { clearInterval(mouseInterval); mouseInterval = setInterval(function(){ return mouseDownFunc(); }, 50); }
 	};
@@ -138,6 +148,7 @@ window.onload = function() {
 	    var new_x = window.BOXITEM.outerWidth() - 1;
 	    window.BOXITEM.css({"width": new_x+"px"});
 	    setSizeDisplay(window.BOXITEM.outerHeight(), new_x);
+	    boxResizeEvt();
 	    
 	     if (mouseStillDown) { clearInterval(mouseInterval); mouseInterval = setInterval(function(){ return mouseDownFunc(); }, 50); }
 	};
@@ -156,6 +167,7 @@ window.onload = function() {
 	    var new_x = window.BOXITEM.outerHeight() - 1;
 	    window.BOXITEM.css({"height": new_x+"px"});
 	    setSizeDisplay(new_x, window.BOXITEM.outerWidth());
+	    boxResizeEvt();
 	    
 	     if (mouseStillDown) { clearInterval(mouseInterval); mouseInterval = setInterval(function(){ return mouseDownFunc(); }, 50); }
 	};

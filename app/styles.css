@@ -425,3 +425,20 @@ display: none;
   width: 0;
   height: 0;
 }
+
+.handle {
+    display: none;
+    cursor: pointer;
+    height: 0;
+    width: 0;
+}
+
+.handle.h-top,
+.handle.h-bottom {
+    border-top: 1px dashed grey;
+}
+
+.handle.h-left,
+.handle.h-right {
+    border-left: 1px dashed grey;
+}
