@@ -13,11 +13,15 @@ function closeWindow() {
 }
 
 function boxResizeEvt() {
+  /*
   $.event.trigger({
     type: "layerResize",
     message: "true",
     time: new Date()
   });
+  */
+  
+  window.BOXITEM.trigger("layerResize");
 }
 
 function setActiveBox(b) {
@@ -83,7 +87,26 @@ function setCornerRadiusDisplay(cr) {
 }
 
 function setTransformHandles() {
+  var ht = $(".h-top");
+  var hb = $(".h-bottom");
+  var hr = $(".h-right");
+  var hl = $(".h-left");
   
+  ht.css({"width": window.BOXITEM.outerWidth()+10,
+          "top": window.BOXITEM.offset().top-10,
+          "left": window.BOXITEM.offset().left-5}).show()
+  
+  hb.css({"width": window.BOXITEM.outerWidth()+10,
+          "top": window.BOXITEM.offset().top+window.BOXITEM.height(),
+          "left": window.BOXITEM.offset().left-5}).show();
+  
+  hr.css({"top": window.BOXITEM.offset().top-7,
+          "left": window.BOXITEM.offset().left+window.BOXITEM.outerWidth(),
+          "height": window.BOXITEM.height()+14}).show();
+  
+  hl.css({"top": window.BOXITEM.offset().top-7,
+          "left": window.BOXITEM.offset().left-10,
+          "height": window.BOXITEM.height()+14}).show();
 }
 
 /* ========================== */

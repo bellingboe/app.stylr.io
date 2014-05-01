@@ -428,17 +428,30 @@ display: none;
 
 .handle {
     display: none;
-    cursor: pointer;
+    cursor: -moz-grab;
+    cursor: -webkit-grab;
+    cursor: grab;
     height: 0;
     width: 0;
+    position: absolute;
 }
 
-.handle.h-top,
+.handle.h-top {
+    border-top: 2px dotted rgba(0, 0, 0, 0.6);
+    padding: 4px;
+}
+
 .handle.h-bottom {
-    border-top: 1px dashed grey;
+    border-bottom: 2px dotted rgba(0, 0, 0, 0.6);
+    padding: 4px;
 }
 
-.handle.h-left,
+.handle.h-left{
+    border-left: 2px dotted rgba(0, 0, 0, 0.6);
+    padding: 4px;
+}
+
 .handle.h-right {
-    border-left: 1px dashed grey;
+    border-right: 2px dotted rgba(0, 0, 0, 0.6);
+    padding: 4px;
 }
