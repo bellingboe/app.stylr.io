@@ -425,3 +425,38 @@ display: none;
   width: 0;
   height: 0;
 }
+
+.handle {
+    display: none;
+    cursor: -moz-grab;
+    cursor: -webkit-grab;
+    cursor: grab;
+    height: 0;
+    width: 0;
+    position: absolute;
+}
+.is-dragging {
+    cursor: -moz-grabbing;
+    cursor: -webkit-grabbing;
+    cursor: grabbing;
+}
+
+.handle.h-top {
+    border-top: 2px dotted rgba(0, 0, 0, 0.6);
+    padding: 4px;
+}
+
+.handle.h-bottom {
+    border-bottom: 2px dotted rgba(0, 0, 0, 0.6);
+    padding: 4px;
+}
+
+.handle.h-left{
+    border-left: 2px dotted rgba(0, 0, 0, 0.6);
+    padding: 4px;
+}
+
+.handle.h-right {
+    border-right: 2px dotted rgba(0, 0, 0, 0.6);
+    padding: 4px;
+}

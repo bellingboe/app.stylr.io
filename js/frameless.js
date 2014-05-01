@@ -20,6 +20,31 @@ window.onload = function() {
         $(this).children(".descr").slideToggle();
     });
     
+    $("body").on("click", ".edit-box", function(ev){
+	if ($(this).attr("id") !== window.BOXITEM.attr("id")) {
+	    setActiveBox($(this));
+	}
+    }).on("mouseup", function() {
+	isMovingLayer = false;
+	$("body").removeClass("is-dragging");
+	$(".handle").removeClass("is-dragging");
+    }).on("mousedown", ".h-top", function(ev){
+	isMovingLayer = true;
+    }).on("mousedown", ".h-bottom", function(ev){
+	isMovingLayer = true;
+    }).on("mousedown", ".h-left", function(ev){
+	isMovingLayer = true;
+    }).on("mousedown", ".h-right", function(ev){
+	isMovingLayer = true;
+    }).on("mousemove", function(e) {
+	if (isMovingLayer) {
+	    $("body").addClass("is-dragging");
+	    $(".handle").addClass("is-dragging");
+	}
+    });
+    
+    
+
     $(".tools").on("mousedown", ".pos-add-x", function(ev){
 	mouseStillDown = true;
 	mouseDownFunc = function() {
@@ -28,6 +53,7 @@ window.onload = function() {
 	    var new_x = (window.BOXITEM.offset().left - 160) + 1;
 	    window.BOXITEM.css({"left": new_x+"px"});
 	    setPosDisplay(window.BOXITEM.offset().top-35, new_x);
+	    boxResizeEvt();
 	    
 	     if (mouseStillDown) { clearInterval(mouseInterval); mouseInterval = setInterval(function(){ return mouseDownFunc(); }, 50); }
 	};
@@ -46,6 +72,7 @@ window.onload = function() {
 	    var new_x = (window.BOXITEM.offset().left - 160) - 1;
 	    window.BOXITEM.css({"left": new_x+"px"});
 	    setPosDisplay(window.BOXITEM.offset().top-35, new_x);
+	    boxResizeEvt();
 	
 	     if (mouseStillDown) { clearInterval(mouseInterval); mouseInterval = setInterval(function(){ return mouseDownFunc(); }, 50); }
 	};
@@ -64,6 +91,7 @@ window.onload = function() {
 	    var new_x = (window.BOXITEM.offset().top - 35) + 1;
 	    window.BOXITEM.css({"top": new_x+"px"});
 	    setPosDisplay(new_x, window.BOXITEM.offset().left-160);
+	    boxResizeEvt();
 	    
 	     if (mouseStillDown) { clearInterval(mouseInterval); mouseInterval = setInterval(function(){ return mouseDownFunc(); }, 50); }
 	};
@@ -82,6 +110,7 @@ window.onload = function() {
 	    var new_x = (window.BOXITEM.offset().top - 35) - 1;
 	    window.BOXITEM.css({"top": new_x+"px"});
 	    setPosDisplay(new_x, window.BOXITEM.offset().left-160);
+	    boxResizeEvt();
 	    
 	     if (mouseStillDown) { clearInterval(mouseInterval); mouseInterval = setInterval(function(){ return mouseDownFunc(); }, 50); }
 	};
@@ -102,6 +131,7 @@ window.onload = function() {
 	    var new_x = window.BOXITEM.outerWidth() + 1;
 	    window.BOXITEM.css({"width": new_x+"px"});
 	    setSizeDisplay(window.BOXITEM.outerHeight(), new_x);
+	    boxResizeEvt();
 	    
 	     if (mouseStillDown) { clearInterval(mouseInterval); mouseInterval = setInterval(function(){ return mouseDownFunc(); }, 50); }
 	};
@@ -120,6 +150,7 @@ window.onload = function() {
 	    var new_x = window.BOXITEM.outerHeight() + 1;
 	    window.BOXITEM.css({"height": new_x+"px"});
 	    setSizeDisplay(new_x, window.BOXITEM.outerWidth());
+	    boxResizeEvt();
 	    
 	     if (mouseStillDown) { clearInterval(mouseInterval); mouseInterval = setInterval(function(){ return mouseDownFunc(); }, 50); }
 	};
@@ -138,6 +169,7 @@ window.onload = function() {
 	    var new_x = window.BOXITEM.outerWidth() - 1;
 	    window.BOXITEM.css({"width": new_x+"px"});
 	    setSizeDisplay(window.BOXITEM.outerHeight(), new_x);
+	    boxResizeEvt();
 	    
 	     if (mouseStillDown) { clearInterval(mouseInterval); mouseInterval = setInterval(function(){ return mouseDownFunc(); }, 50); }
 	};
@@ -156,6 +188,7 @@ window.onload = function() {
 	    var new_x = window.BOXITEM.outerHeight() - 1;
 	    window.BOXITEM.css({"height": new_x+"px"});
 	    setSizeDisplay(new_x, window.BOXITEM.outerWidth());
+	    boxResizeEvt();
 	    
 	     if (mouseStillDown) { clearInterval(mouseInterval); mouseInterval = setInterval(function(){ return mouseDownFunc(); }, 50); }
 	};
@@ -234,6 +267,7 @@ window.onload = function() {
             //$(".footer-top").fadeIn();
             $("#content").css({"position": "absolute"});
             var box = $("<div>").hide().appendTo($("#content")).fadeIn();
+	    layerCount++;
             setActiveBox(box);
         }});
         

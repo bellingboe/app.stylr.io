@@ -1,5 +1,8 @@
 
 var isNative = true;
+var layerSel = false;
+var layerCount = 0;
+var isMovingLayer = false;
 
 try {
     var nativeWindow = require("nw.gui").Window.get();
@@ -12,9 +15,34 @@ function closeWindow() {
   window.close();
 }
 
+function boxResizeEvt() {
+  window.BOXITEM.trigger("layerResize");
+}
+
 function setActiveBox(b) {
   window.BOXITEM = b;
   b.addClass("edit-box");
+  b.attr("id", "layer_"+layerCount);
+  
+  window.BOXITEM.on("layerResize", function(e){
+    setTransformHandles(true);
+  }).on("mouseenter", function(e){
+    setTransformHandles(true);
+  }).on("mouseout", function(e){
+    if (!layerSel) {
+      setTransformHandles(false);
+    }
+  }).on("mousedown", function(){
+    if ($(this).hasClass("is-selected")) {
+      $(this).removeClass("is-selected");
+      setTransformHandles(false);
+      layerSel = false;
+    } else {
+      $(this).addClass("is-selected");
+      setTransformHandles(true);
+      layerSel = true;
+    }
+  });
 
   setPosDisplay(b.offset().top-35,b.offset().left-160);
   setSizeDisplay(b.outerHeight(),b.outerWidth());
@@ -22,6 +50,7 @@ function setActiveBox(b) {
   setLayerColor(b.css('backgroundColor'));
   setBorderDisplay(b.css('borderWidth').replace("px", ""), b.css('borderColor'));
   setCornerRadiusDisplay(b.css('borderRadius').replace("px", ""));
+  setTransformHandles();
 }
 
 function setPosDisplay(t,l) {
@@ -67,6 +96,49 @@ function setBorderDisplay(size, hex, hash) {
 
 function setCornerRadiusDisplay(cr) {
   $(".corner-width").html(cr);
+}
+
+function setTransformHandles(show) {
+  var ht = $(".h-top");
+  var hb = $(".h-bottom");
+  var hr = $(".h-right");
+  var hl = $(".h-left");
+  
+  ht.css({"width": window.BOXITEM.outerWidth()+10,
+          "top": window.BOXITEM.offset().top-10,
+          "left": window.BOXITEM.offset().left-5});
+  if (show) {
+    ht.show();
+  } else {
+    ht.hide();
+  }
+  
+  hb.css({"width": window.BOXITEM.outerWidth()+10,
+          "top": window.BOXITEM.offset().top+window.BOXITEM.height(),
+          "left": window.BOXITEM.offset().left-5});
+  if (show) {
+    hb.show();
+  } else {
+    hb.hide();
+  }
+  
+  hr.css({"top": window.BOXITEM.offset().top-7,
+          "left": window.BOXITEM.offset().left+window.BOXITEM.outerWidth(),
+          "height": window.BOXITEM.height()+14});
+  if (show) {
+    hr.show();
+  } else {
+    hr.hide();
+  }
+  
+  hl.css({"top": window.BOXITEM.offset().top-7,
+          "left": window.BOXITEM.offset().left-10,
+          "height": window.BOXITEM.height()+14});
+  if (show) {
+    hl.show();
+  } else {
+    hl.hide();
+  }
 }
 
 /* ========================== */
