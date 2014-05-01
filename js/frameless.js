@@ -189,11 +189,19 @@ window.onload = function() {
     });
     
     $("#btn_gh").on("click", function(ev){
-        window.location = 'https://github.com/bellingboe/app.stylr.io';
+	if (isNative) {
+	    gui.Shell.openExternal('https://github.com/bellingboe/app.stylr.io');
+	} else {
+	    window.location = 'https://github.com/bellingboe/app.stylr.io';
+	}
     });
     
     $("#btn_twt").on("click", function(ev){
-        window.location = 'https://twitter.com/NerdWhoCodes';
+	if (isNative) {
+	    gui.Shell.openExternal('https://twitter.com/NerdWhoCodes');
+	} else {
+	    window.location = 'https://twitter.com/NerdWhoCodes';
+	}
     });
     
     $("#btn_new").on("click", function(ev){
@@ -278,10 +286,6 @@ window.onload = function() {
     updateContentStyle();
     
     try {
-	require("nw.gui").Window.get().show();
-    } catch (e) {
-	console.log("[browser app]");
-    }
-
-    
+	nativeWindow.show();
+    } catch (e) {}
 }

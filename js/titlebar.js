@@ -1,4 +1,12 @@
 
+var isNative = true;
+
+try {
+    var nativeWindow = require("nw.gui").Window.get();
+    var gui = require('nw.gui');
+} catch (e) {
+    isNative = false;
+}
 
 function closeWindow() {
   window.close();
@@ -117,12 +125,14 @@ function addTitlebar(titlebar_name, titlebar_icon_url, titlebar_text) {
   title.innerText = titlebar_text;
   titlebar.appendChild(title);
 
-  var closeButton = createButton(titlebar_name + "-close-button",
-                                 titlebar_name + "-close-button",
-                                 "button_close.png",
-                                 "button_close_hover.png",
-                                 closeWindow);
-  titlebar.appendChild(closeButton);
+  if (isNative) {
+    var closeButton = createButton(titlebar_name + "-close-button",
+                      titlebar_name + "-close-button",
+                      "button_close.png",
+                      "button_close_hover.png",
+                      closeWindow);
+                      titlebar.appendChild(closeButton);
+  }
 
   /*
   var divider = document.createElement("div");
