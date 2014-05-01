@@ -15,6 +15,7 @@ window.onload = function() {
     var mouseStillDown = false;
     var mouseDownFunc = false;
     var mouseInterval = null;
+    var resizeDir;
     
     $("body").on("click", ".footer", function(ev){
         $(this).children(".descr").slideToggle();
@@ -26,24 +27,48 @@ window.onload = function() {
 	}
     }).on("mouseup", function() {
 	isMovingLayer = false;
-	$("body").removeClass("is-dragging");
+	$("#content").removeClass("is-dragging");
 	$(".handle").removeClass("is-dragging");
+	window.BOXITEM.removeClass("is-dragging");
     }).on("mousedown", ".h-top", function(ev){
 	isMovingLayer = true;
+	resizeDir = 1; // UP
     }).on("mousedown", ".h-bottom", function(ev){
 	isMovingLayer = true;
+	resizeDir = 2; // DOWN
     }).on("mousedown", ".h-left", function(ev){
 	isMovingLayer = true;
+	resizeDir = 3; // LEFT
     }).on("mousedown", ".h-right", function(ev){
 	isMovingLayer = true;
+	resizeDir = 4; // DOWN
     }).on("mousemove", function(e) {
 	if (isMovingLayer) {
-	    $("body").addClass("is-dragging");
+	    $("#content").addClass("is-dragging");
 	    $(".handle").addClass("is-dragging");
+	    window.BOXITEM.addClass("is-dragging");
+	    
+	    switch (resizeDir) {
+		case 1: // UP
+		break; 
+		case 2: // DOWN
+		    var bottom = window.BOXITEM.offset().top+window.BOXITEM.height();
+		    var diff =  e.pageY - bottom;
+		    window.BOXITEM.css("height", (window.BOXITEM.height()+diff)+"px");
+		break;
+		case 3: // LEFT
+		break;
+		case 4: // RIGHT
+		break;
+	    }
+	    
+	    boxResizeEvt();
+	    
+	    setSizeDisplay(window.BOXITEM.outerHeight(),window.BOXITEM.outerWidth());
+	    setPosDisplay(window.BOXITEM.offset().top-35,window.BOXITEM.offset().left-160);
+	    
 	}
     });
-    
-    
 
     $(".tools").on("mousedown", ".pos-add-x", function(ev){
 	mouseStillDown = true;

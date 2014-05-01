@@ -27,10 +27,10 @@ function setActiveBox(b) {
   window.BOXITEM.on("layerResize", function(e){
     setTransformHandles(true);
   }).on("mouseenter", function(e){
-    setTransformHandles(true);
+    //setTransformHandles(true);
   }).on("mouseout", function(e){
     if (!layerSel) {
-      setTransformHandles(false);
+      //setTransformHandles(false);
     }
   }).on("mousedown", function(){
     if ($(this).hasClass("is-selected")) {
