@@ -3,12 +3,27 @@ var isNative = true;
 var layerSel = false;
 var layerCount = 0;
 var isMovingLayer = false;
+var appOpen = false;
 
 try {
     var nativeWindow = require("nw.gui").Window.get();
     var gui = require('nw.gui');
 } catch (e) {
     isNative = false;
+}
+
+function switchLayers(a, b) {
+  if (a.attr("id") !== b.attr("id")) {
+    setActiveBox(a);
+    b.attr("data-active", "0");
+    b.removeClass("is-selected");
+    setTransformHandles(false);
+    layerSel = false;
+    
+    return true;
+  } else {
+    return false;
+  }
 }
 
 function closeWindow() {
@@ -21,28 +36,9 @@ function boxResizeEvt() {
 
 function setActiveBox(b) {
   window.BOXITEM = b;
-  b.addClass("edit-box");
-  b.attr("id", "layer_"+layerCount);
-  
-  window.BOXITEM.on("layerResize", function(e){
-    setTransformHandles(true);
-  }).on("mouseenter", function(e){
-    //setTransformHandles(true);
-  }).on("mouseout", function(e){
-    if (!layerSel) {
-      //setTransformHandles(false);
-    }
-  }).on("mousedown", function(){
-    if ($(this).hasClass("is-selected")) {
-      $(this).removeClass("is-selected");
-      setTransformHandles(false);
-      layerSel = false;
-    } else {
-      $(this).addClass("is-selected");
-      setTransformHandles(true);
-      layerSel = true;
-    }
-  });
+  window.BOXITEM .addClass("edit-box");
+  window.BOXITEM .attr("id", "layer_"+layerCount);
+  window.BOXITEM .attr("data-active", "1");
 
   setPosDisplay(b.offset().top-35,b.offset().left-160);
   setSizeDisplay(b.outerHeight(),b.outerWidth());
@@ -104,41 +100,44 @@ function setTransformHandles(show) {
   var hr = $(".h-right");
   var hl = $(".h-left");
   
-  ht.css({"width": window.BOXITEM.outerWidth()+10,
-          "top": window.BOXITEM.offset().top-10,
-          "left": window.BOXITEM.offset().left-5});
-  if (show) {
-    ht.show();
-  } else {
-    ht.hide();
-  }
-  
-  hb.css({"width": window.BOXITEM.outerWidth()+10,
-          "top": window.BOXITEM.offset().top+window.BOXITEM.height(),
-          "left": window.BOXITEM.offset().left-5});
-  if (show) {
-    hb.show();
-  } else {
-    hb.hide();
-  }
-  
-  hr.css({"top": window.BOXITEM.offset().top-7,
-          "left": window.BOXITEM.offset().left+window.BOXITEM.outerWidth(),
-          "height": window.BOXITEM.height()+14});
-  if (show) {
-    hr.show();
-  } else {
-    hr.hide();
-  }
-  
-  hl.css({"top": window.BOXITEM.offset().top-7,
-          "left": window.BOXITEM.offset().left-10,
-          "height": window.BOXITEM.height()+14});
-  if (show) {
-    hl.show();
-  } else {
-    hl.hide();
-  }
+  if ("undefined" !== typeof window.BOXITEM) {
+    ht.css({"width": window.BOXITEM.outerWidth()+10,
+            "top": window.BOXITEM.offset().top-10,
+            "left": window.BOXITEM.offset().left-5});
+    if (show) {
+      ht.show();
+    } else {
+      ht.hide();
+    }
+    
+    hb.css({"width": window.BOXITEM.outerWidth()+10,
+            "top": window.BOXITEM.offset().top+window.BOXITEM.height(),
+            "left": window.BOXITEM.offset().left-5});
+    if (show) {
+      hb.show();
+    } else {
+      hb.hide();
+    }
+    
+    hr.css({"top": window.BOXITEM.offset().top-7,
+            "left": window.BOXITEM.offset().left+window.BOXITEM.outerWidth(),
+            "height": window.BOXITEM.height()+14});
+    if (show) {
+      hr.show();
+    } else {
+      hr.hide();
+    }
+    
+    hl.css({"top": window.BOXITEM.offset().top-7,
+            "left": window.BOXITEM.offset().left-10,
+            "height": window.BOXITEM.height()+14});
+    if (show) {
+      hl.show();
+    } else {
+      hl.hide();
+    }
+    }
+
 }
 
 /* ========================== */

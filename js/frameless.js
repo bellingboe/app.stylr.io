@@ -11,38 +11,44 @@ window.onresize = function() {
 }
 
 window.onload = function() {
-    
+
     var mouseStillDown = false;
     var mouseDownFunc = false;
     var mouseInterval = null;
     var resizeDir;
     
-    $("body").on("click", ".footer", function(ev){
-        $(this).children(".descr").slideToggle();
-    });
+    // BODY ==================================================================
     
-    $("body").on("click", ".edit-box", function(ev){
-	if ($(this).attr("id") !== window.BOXITEM.attr("id")) {
-	    setActiveBox($(this));
-	}
-    }).on("mouseup", function() {
+    $("body")
+    .on("click", ".footer", function(ev){
+	
+        $(this).children(".descr").slideToggle();
+	
+    })
+    
+    .on("mouseup", function(ev) {
+	
 	isMovingLayer = false;
 	$("#content").removeClass("is-dragging");
 	$(".handle").removeClass("is-dragging");
-	window.BOXITEM.removeClass("is-dragging");
-    }).on("mousedown", ".h-top", function(ev){
-	isMovingLayer = true;
-	resizeDir = 1; // UP
-    }).on("mousedown", ".h-bottom", function(ev){
-	isMovingLayer = true;
-	resizeDir = 2; // DOWN
-    }).on("mousedown", ".h-left", function(ev){
-	isMovingLayer = true;
-	resizeDir = 3; // LEFT
-    }).on("mousedown", ".h-right", function(ev){
-	isMovingLayer = true;
-	resizeDir = 4; // DOWN
-    }).on("mousemove", function(e) {
+	
+	if ("undefined" !== typeof window.BOXITEM) {
+	    window.BOXITEM.removeClass("is-dragging");
+	}
+
+    })
+    
+    .on("mousedown", "#content", function(ev){
+	
+	isMovingLayer = false;
+	setTransformHandles(false);
+	console.log(ev);
+	
+    })
+   
+    .on("mousemove", function(ev) {
+	
+	ev.stopPropagation();
 	if (isMovingLayer) {
 	    $("#content").addClass("is-dragging");
 	    $(".handle").addClass("is-dragging");
@@ -53,7 +59,7 @@ window.onload = function() {
 		break; 
 		case 2: // DOWN
 		    var bottom = window.BOXITEM.offset().top+window.BOXITEM.height();
-		    var diff =  e.pageY - bottom;
+		    var diff =  ev.pageY - bottom;
 		    window.BOXITEM.css("height", (window.BOXITEM.height()+diff)+"px");
 		break;
 		case 3: // LEFT
@@ -69,8 +75,80 @@ window.onload = function() {
 	    
 	}
     });
-
-    $(".tools").on("mousedown", ".pos-add-x", function(ev){
+    
+    // HANDLERS ==================================================================
+    
+    $("#handles")
+    .on("mousedown", ".h-top", function(ev){
+	
+	ev.stopPropagation();
+	isMovingLayer = true;
+	resizeDir = 1; // UP
+	
+    }).on("mousedown", ".h-bottom", function(ev){
+	
+	ev.stopPropagation();
+	isMovingLayer = true;
+	resizeDir = 2; // DOWN
+	
+    }).on("mousedown", ".h-left", function(ev){
+	
+	ev.stopPropagation();
+	isMovingLayer = true;
+	resizeDir = 3; // LEFT
+	
+    }).on("mousedown", ".h-right", function(ev){
+	
+	ev.stopPropagation();
+	isMovingLayer = true;
+	resizeDir = 4; // DOWN
+	
+    });
+    
+    $("#content")
+    
+    .on("mousedown", function(ev){
+	if (window.BOXITEM) {
+	    var b = window.BOXITEM;
+	    b.attr("data-active", "0");
+	    b.removeClass("is-selected");
+	    setTransformHandles(false);
+	    layerSel = false;
+	}
+    })
+    
+    .on("mousedown", ".edit-box", function(ev){
+	switchLayers($(this), window.BOXITEM);
+    })
+    
+    .on("layerResize", ".edit-box", function(ev){
+	//ev.stopPropagation();
+	setTransformHandles(true);
+	
+    }).on("mousedown", ".edit-box", function(ev){
+	var a = $(this);
+	var b = window.BOXITEM;
+	
+	var didSwitch = switchLayers(a, b);
+	if (!didSwitch) {
+	    if ($(this).hasClass("is-selected")) {
+	      $(this).removeClass("is-selected");
+	      $(this).attr("data-active", "0");
+	      layerSel = false;
+	    } else {
+	      $(this).addClass("is-selected");
+	      $(this).attr("data-active", "1");
+	      setTransformHandles(true);
+	      layerSel = true;
+	    }
+	    ev.stopPropagation();
+	}
+    });
+    
+    // TOOLS ==================================================================
+	
+    $(".tools")
+    .on("mousedown", ".pos-add-x", function(ev){
 	mouseStillDown = true;
 	mouseDownFunc = function() {
 	    if (!mouseStillDown) { return; }
@@ -84,12 +162,14 @@ window.onload = function() {
 	};
 	
 	mouseDownFunc();
-    }).mouseup(function(event) {
+    })
+    
+    .on("mouseup", function(event) {
 	mouseStillDown = false;
 	clearInterval(mouseInterval);
-    });
-    
-    $(".tools").on("mousedown", ".pos-sub-x", function(ev){
+    })
+	
+    .on("mousedown", ".pos-sub-x", function(ev){
 	mouseStillDown = true;
 	mouseDownFunc = function() {
 	    if (!mouseStillDown) { return; }
@@ -103,12 +183,9 @@ window.onload = function() {
 	};
 	
 	mouseDownFunc();
-    }).mouseup(function(event) {
-	mouseStillDown = false;
-	clearInterval(mouseInterval);
-    });
-    
-    $(".tools").on("mousedown", ".pos-add-y", function(ev){
+    })
+	
+    .on("mousedown", ".pos-add-y", function(ev){
 	mouseStillDown = true;
 	mouseDownFunc = function() {
 	    if (!mouseStillDown) { return; }
@@ -122,12 +199,9 @@ window.onload = function() {
 	};
 	
 	mouseDownFunc();
-    }).mouseup(function(event) {
-	mouseStillDown = false;
-	clearInterval(mouseInterval);
-    });
-    
-    $(".tools").on("mousedown", ".pos-sub-y", function(ev){
+    })
+	
+    .on("mousedown", ".pos-sub-y", function(ev){
 	mouseStillDown = true;
 	mouseDownFunc = function() {
 	    if (!mouseStillDown) { return; }
@@ -141,14 +215,9 @@ window.onload = function() {
 	};
 	
 	mouseDownFunc();
-    }).mouseup(function(event) {
-	mouseStillDown = false;
-	clearInterval(mouseInterval);
-    });
-    
-    /* ================================================= */
-    
-    $(".tools").on("mousedown", ".size-add-w", function(ev){
+    })
+	
+    .on("mousedown", ".size-add-w", function(ev){
 	mouseStillDown = true;
 	mouseDownFunc = function() {
 	    if (!mouseStillDown) { return; }
@@ -162,12 +231,9 @@ window.onload = function() {
 	};
 	
 	mouseDownFunc();
-    }).mouseup(function(event) {
-	mouseStillDown = false;
-	clearInterval(mouseInterval);
-    });
+    })
     
-    $(".tools").on("mousedown", ".size-add-h", function(ev){
+    .on("mousedown", ".size-add-h", function(ev){
 	mouseStillDown = true;
 	mouseDownFunc = function() {
 	    if (!mouseStillDown) { return; }
@@ -185,6 +251,10 @@ window.onload = function() {
 	mouseStillDown = false;
 	clearInterval(mouseInterval);
     });
+    
+    /* ============================================
+    TOOL: size button WIDTH
+    ============================================ */
     
     $(".tools").on("mousedown", ".size-sub-w", function(ev){
 	mouseStillDown = true;
@@ -204,6 +274,10 @@ window.onload = function() {
 	mouseStillDown = false;
 	clearInterval(mouseInterval);
     });
+    
+    /* ============================================
+    TOOL: size button HEIGHT
+    ============================================ */
     
     $(".tools").on("mousedown", ".size-sub-h", function(ev){
 	mouseStillDown = true;
@@ -245,6 +319,10 @@ window.onload = function() {
 	    window.BOXITEM.css("borderRadius", border + "px");
 	    setCornerRadiusDisplay(border);
     });
+    
+    /* ============================================
+    Interface elements
+    ============================================ */
     
     $("#btn_gh").on("click", function(ev){
 	if (isNative) {
