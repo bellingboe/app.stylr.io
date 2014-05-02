@@ -58,7 +58,7 @@ window.onload = function() {
 	    switch (resizeDir) {
 		case 1: // UP
 		    var top = window.BOXITEM.offset().top;
-		    var diff =  ev.pageY- top;
+		    var diff =  ev.pageY - top;
 		    window.BOXITEM.css("top", (parseInt(window.BOXITEM.css("top"))+diff)+"px");
 		break; 
 		case 2: // DOWN
@@ -67,8 +67,14 @@ window.onload = function() {
 		    window.BOXITEM.css("height", (window.BOXITEM.height()+diff)+"px");
 		break;
 		case 3: // LEFT
+		    var left = window.BOXITEM.offset().left;
+		    var diff =  ev.pageX - left;
+		    window.BOXITEM.css("left", (parseInt(window.BOXITEM.css("left"))+diff)+"px");
 		break;
 		case 4: // RIGHT
+		    var right = window.BOXITEM.offset().left+window.BOXITEM.width();
+		    var diff =  ev.pageX - right
+		    window.BOXITEM.css("width", (window.BOXITEM.width()+diff)+"px");
 		break;
 	    }
 	    
