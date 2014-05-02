@@ -21,13 +21,10 @@ window.onload = function() {
     
     $("body")
     .on("click", ".footer", function(ev){
-	
         $(this).children(".descr").slideToggle();
-	
     })
     
     .on("mouseup", function(ev) {
-	
 	isMovingLayer = false;
 	$("#content").removeClass("is-dragging");
 	$(".handle").removeClass("is-dragging");
@@ -36,15 +33,12 @@ window.onload = function() {
 	    window.BOXITEM.removeClass("is-dragging");
 	}
 	
-	$(".resize-dir").removeClass("resize-dir");
-
+	$(".resize-dir").removeClass("resize-dir")
     })
     
     .on("mousedown", "#content", function(ev){
-	
 	isMovingLayer = false;
 	setTransformHandles(false);
-	
     })
    
     .on("mousemove", function(ev) {
@@ -57,24 +51,50 @@ window.onload = function() {
 	    
 	    switch (resizeDir) {
 		case 1: // UP
-		    var top = window.BOXITEM.offset().top;
-		    var diff =  ev.pageY - top;
-		    window.BOXITEM.css("top", (parseInt(window.BOXITEM.css("top"))+diff)+"px");
+		     if (ev.ctrlKey) {
+			var top = window.BOXITEM.offset().top;
+			var diff =  ev.pageY - top;
+			window.BOXITEM.css("top", (parseInt(window.BOXITEM.css("top"))+diff)+"px");
+		     } else {
+			var top= window.BOXITEM.offset().top;
+			var diff =  ev.pageY - top;
+			window.BOXITEM.css("height", (window.BOXITEM.height()-diff)+"px");
+			window.BOXITEM.css("top", (parseInt(window.BOXITEM.css("top"))+diff)+"px");
+		     }
 		break; 
 		case 2: // DOWN
-		    var bottom = window.BOXITEM.offset().top+window.BOXITEM.height();
-		    var diff =  ev.pageY - bottom;
-		    window.BOXITEM.css("height", (window.BOXITEM.height()+diff)+"px");
+		     if (ev.ctrlKey) {
+			var top = window.BOXITEM.offset().top + window.BOXITEM.height();
+			var diff =  ev.pageY - top;
+			window.BOXITEM.css("top", (parseInt(window.BOXITEM.css("top"))+diff)+"px");
+		    } else {
+			var bottom = window.BOXITEM.offset().top + window.BOXITEM.height();
+			var diff =  ev.pageY - bottom;
+			window.BOXITEM.css("height", (window.BOXITEM.height()+diff)+"px");
+		    }
 		break;
 		case 3: // LEFT
-		    var left = window.BOXITEM.offset().left;
-		    var diff =  ev.pageX - left;
-		    window.BOXITEM.css("left", (parseInt(window.BOXITEM.css("left"))+diff)+"px");
+		    if (ev.ctrlKey) {
+			var left = window.BOXITEM.offset().left;
+			var diff =  ev.pageX - left;
+			window.BOXITEM.css("left", (parseInt(window.BOXITEM.css("left"))+diff)+"px");
+		    } else {
+			var left = window.BOXITEM.offset().left;
+			var diff =  ev.pageX - left;
+			window.BOXITEM.css("width", (window.BOXITEM.width()-diff)+"px");
+			window.BOXITEM.css("left", (parseInt(window.BOXITEM.css("left"))+diff)+"px");
+		    }
 		break;
 		case 4: // RIGHT
-		    var right = window.BOXITEM.offset().left+window.BOXITEM.width();
-		    var diff =  ev.pageX - right
-		    window.BOXITEM.css("width", (window.BOXITEM.width()+diff)+"px");
+		    if (ev.ctrlKey) {
+			var left = window.BOXITEM.offset().left + window.BOXITEM.width();
+			var diff =  ev.pageX - left;
+			window.BOXITEM.css("left", (parseInt(window.BOXITEM.css("left"))+diff)+"px");
+		    } else{
+			var right = window.BOXITEM.offset().left + window.BOXITEM.width();
+			var diff =  ev.pageX - right;
+			window.BOXITEM.css("width", (window.BOXITEM.width()+diff)+"px");
+		    }
 		break;
 	    }
 	    
@@ -112,15 +132,13 @@ window.onload = function() {
 	resizeDir = 3; // LEFT
 	
     }).on("mousedown", ".h-right", function(ev){
-	
 	ev.stopPropagation();
 	isMovingLayer = true;
 	resizeDir = 4; // DOWN
-	
+
     });
     
     $("#content")
-    
     .on("mousedown", function(ev){
 	if (window.BOXITEM) {
 	    var b = window.BOXITEM;
@@ -134,8 +152,9 @@ window.onload = function() {
     .on("layerResize", ".edit-box", function(ev){
 	//ev.stopPropagation();
 	setTransformHandles(true);
-	
-    }).on("mousedown", ".edit-box", function(ev){
+    })
+    
+    .on("mousedown", ".edit-box", function(ev){
 	var a = $(this);
 	var b = window.BOXITEM;
 	
