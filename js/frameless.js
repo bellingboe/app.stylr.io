@@ -35,6 +35,8 @@ window.onload = function() {
 	if ("undefined" !== typeof window.BOXITEM) {
 	    window.BOXITEM.removeClass("is-dragging");
 	}
+	
+	$(".resize-dir").removeClass("resize-dir");
 
     })
     
@@ -42,7 +44,6 @@ window.onload = function() {
 	
 	isMovingLayer = false;
 	setTransformHandles(false);
-	console.log(ev);
 	
     })
    
@@ -77,6 +78,10 @@ window.onload = function() {
     });
     
     // HANDLERS ==================================================================
+    
+    $(".handle").on("mousedown", function(){
+	$(this).addClass("resize-dir");
+    });
     
     $("#handles")
     .on("mousedown", ".h-top", function(ev){
@@ -116,11 +121,7 @@ window.onload = function() {
 	    layerSel = false;
 	}
     })
-    
-    .on("mousedown", ".edit-box", function(ev){
-	switchLayers($(this), window.BOXITEM);
-    })
-    
+
     .on("layerResize", ".edit-box", function(ev){
 	//ev.stopPropagation();
 	setTransformHandles(true);
@@ -134,6 +135,7 @@ window.onload = function() {
 	    if ($(this).hasClass("is-selected")) {
 	      $(this).removeClass("is-selected");
 	      $(this).attr("data-active", "0");
+	      setTransformHandles(false);
 	      layerSel = false;
 	    } else {
 	      $(this).addClass("is-selected");

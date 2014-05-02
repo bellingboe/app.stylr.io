@@ -195,7 +195,10 @@ body {
     overflow-x: hidden;
     padding-bottom:10px;
     padding-top: 10px;
-    
+}
+
+.resize-dir {
+    background: rgb(57, 69, 85);
 }
 
 .tool-box {

@@ -15,11 +15,8 @@ try {
 function switchLayers(a, b) {
   if (a.attr("id") !== b.attr("id")) {
     setActiveBox(a);
-    b.attr("data-active", "0");
-    b.removeClass("is-selected");
     setTransformHandles(false);
     layerSel = false;
-    
     return true;
   } else {
     return false;
