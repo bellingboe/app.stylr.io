@@ -57,6 +57,9 @@ window.onload = function() {
 	    
 	    switch (resizeDir) {
 		case 1: // UP
+		    var top = window.BOXITEM.offset().top;
+		    var diff =  ev.pageY- top;
+		    window.BOXITEM.css("top", (parseInt(window.BOXITEM.css("top"))+diff)+"px");
 		break; 
 		case 2: // DOWN
 		    var bottom = window.BOXITEM.offset().top+window.BOXITEM.height();
