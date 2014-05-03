@@ -33,6 +33,10 @@ body {
     font-family: 'Open Sans', sans-serif;
 }
 
+.top-titlebar-text{
+    display: none;
+}
+
 .scene-text, .scene-disc {
     position: absolute;
     z-index:1;
@@ -187,7 +191,7 @@ body {
     position: fixed;
     top: 35px;
     left: -160px;
-    bottom:0;
+    bottom: 0;
     width: 160px;
     padding: 8px;
     overflow-y: auto;
@@ -198,7 +202,11 @@ body {
 }
 
 .resize-dir {
-    background: rgb(57, 69, 85);
+    background: rgba(123, 126, 129, 0.7);
+}
+
+.handle:hover {
+    background: rgba(123, 126, 129, 0.7);
 }
 
 .blur {
@@ -307,14 +315,16 @@ body {
 .edit-box {
     display: block;
     background: #fff;
-    box-shadow: 1px 0 13px rgb(46, 46, 46);
-    border: 0;
-    width: 200px;
-    height: 200px;
-    left: 100px;
-    top: 100px;
+    width: 300px;
+    height: 300px;
+    /*left: 100px;*/
+    top: 150px;
     position: relative;
-    
+    box-sizing: border-box;
+}
+
+.shadow-basic {
+    box-shadow: 1px 0 13px rgb(46, 46, 46);
 }
 
 div#content {
@@ -385,14 +395,12 @@ div#content {
 }
 
 .top-titlebar-text.app-title {
-  position: absolute;
-  left: 35px;
-  width: 80%;
-  margin-top: 6px;
-  margin-bottom: 6px;
-  text-align:center;
-  font-size: 11pt;
-  color: #ffffff;
+    margin-top: 5px;
+    margin-bottom: 6px;
+    text-align: left;
+    font-size: 13pt;
+    color: rgb(255, 255, 255);
+    font-weight: 300;
 }
 
 .top-titlebar-close-button {
@@ -453,21 +461,21 @@ display: none;
 }
 
 .handle.h-top {
-    border-top: 2px dotted rgba(0, 0, 0, 0.6);
-    padding: 4px;
+    border-bottom: 2px dotted rgba(0, 0, 0, 0.7);
+    padding: 5px;
 }
 
 .handle.h-bottom {
-    border-bottom: 2px dotted rgba(0, 0, 0, 0.6);
-    padding: 4px;
+    border-top: 2px dotted rgba(0, 0, 0, 0.7);
+    padding: 5px;
 }
 
 .handle.h-left{
-    border-left: 2px dotted rgba(0, 0, 0, 0.6);
-    padding: 4px;
+    border-right: 2px dotted rgba(0, 0, 0, 0.7);
+    padding: 5px;
 }
 
 .handle.h-right {
-    border-right: 2px dotted rgba(0, 0, 0, 0.6);
-    padding: 4px;
+    border-left: 2px dotted rgba(0, 0, 0, 0.7);
+    padding: 5px;
 }

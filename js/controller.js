@@ -41,7 +41,7 @@ window.onload = function() {
 	setTransformHandles(false);
     })
    
-    .on("mousemove", function(ev) {
+    .on("mousemove", "#content", function(ev) {
 	
 	ev.stopPropagation();
 	if (isMovingLayer) {
@@ -157,7 +157,7 @@ window.onload = function() {
     .on("mousedown", ".edit-box", function(ev){
 	var a = $(this);
 	var b = window.BOXITEM;
-	
+
 	var didSwitch = switchLayers(a, b);
 	if (!didSwitch) {
 	    if ($(this).hasClass("is-selected")) {
@@ -329,23 +329,23 @@ window.onload = function() {
     });
     
     $(".tools").on("mousedown", ".bord-add", function(ev){
-	    var border = parseInt(window.BOXITEM.css("borderWidth").replace("px", ""), 10) + 1;
+	    var border = parseInt(stripPx(window.BOXITEM.css("borderWidth")), 10) + 1;
 	    setBorderDisplay(border, window.BOXITEM.css("borderColor"));
     });
     
     $(".tools").on("mousedown", ".bord-sub", function(ev){
-	    var border = parseInt(window.BOXITEM.css("borderWidth").replace("px", ""), 10) - 1;
+	    var border = parseInt(stripPx(window.BOXITEM.css("borderWidth")), 10) - 1;
 	    setBorderDisplay(border, window.BOXITEM.css("borderColor"));
     });
     
     $(".tools").on("mousedown", ".corner-add", function(ev){
-	    var border = parseInt(window.BOXITEM.css("borderRadius").replace("px", ""), 10) + 1;
+	    var border = parseInt(stripPx(window.BOXITEM.css("borderRadius")), 10) + 1;
 	    window.BOXITEM.css("borderRadius", border + "px");
 	    setCornerRadiusDisplay(border);
     });
     
     $(".tools").on("mousedown", ".corner-sub", function(ev){
-	    var border = parseInt(window.BOXITEM.css("borderRadius").replace("px", ""), 10) - 1;
+	    var border = parseInt(stripPx(window.BOXITEM.css("borderRadius")), 10) - 1;
 	    window.BOXITEM.css("borderRadius", border + "px");
 	    setCornerRadiusDisplay(border);
     });
@@ -371,12 +371,14 @@ window.onload = function() {
     });
     
     $("#btn_new").on("click", function(ev){
+	window.appOpen = true;
+	
         $(this).fadeOut();
         $("#btn_gh").fadeOut();
 	$("#btn_twt").fadeOut();
         
         $(".top-titlebar").css({"top": "-35px"});
-        $(".top-titlebar-text").addClass("app-title");
+        $(".top-titlebar-text").addClass("app-title").show();
         $(".top-titlebar-close-button").addClass("app-title");
         $(".top-titlebar").addClass("app-title");
         $(".top-titlebar-icon").addClass("app-title");
@@ -402,6 +404,8 @@ window.onload = function() {
             var box = $("<div>").hide().appendTo($("#content")).fadeIn();
 	    layerCount++;
             setActiveBox(box);
+	    
+	    window.BOXITEM.center();
         }});
         
     });
@@ -446,7 +450,7 @@ window.onload = function() {
 		return false;
 	},
 	onChange: function (hsb, hex, rgb) {
-	    setBorderDisplay(window.BOXITEM.css('borderWidth').replace("px", ""), hex, "#");
+	    setBorderDisplay(stripPx(window.BOXITEM.css('borderWidth')), hex, "#");
 	}
     });
 

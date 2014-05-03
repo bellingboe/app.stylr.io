@@ -1,32 +1,32 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Stylr - Visual CSS Mockups</title>
+    <title>Stylr</title>
     <link rel="stylesheet" type="text/css" href="styles.css" />
     <link rel="icon" href="ico.ico">
+        
     <script src="../js/jquery-2.1.0.min.js"></script>
+    <script src="../js/jquery.center.js"></script>
+    
+    <script src="../js/functions.js"></script>
+    <script src="../js/toolbar-handler.js"></script>
     <script src="../js/titlebar.js"></script>
-    <script src="../js/frameless.js"></script>
+    
     <link href='http://fonts.googleapis.com/css?family=Open+Sans:300,600' rel='stylesheet' type='text/css'>
+    
     <link rel="stylesheet" media="screen" type="text/css" href="colorpicker/css/colorpicker.css" />
     <script type="text/javascript" src="colorpicker/js/colorpicker.js"></script>
+    
+    <script src="../js/controller.js"></script>
 </head>
 <body>
-    
-    
     <div class="scene-text">Stylr</div>
     <div class="scene-disc">Visual CSS Mockups</div>
     
     <div id="content">
-            <div class="btn-large btn-new" id="btn_new">
-            New Workspace
-            </div>
-            <div class="btn-large btn-gh" id="btn_gh">
-            View Web App Source on GitHub
-            </div>
-            <div class="btn-large btn-twt" id="btn_twt">
-            @NerdWhoCodes on Twitter
-            </div>
+            <div class="btn-large btn-new" id="btn_new">New Workspace</div>
+            <div class="btn-large btn-gh" id="btn_gh">View Web App Source on GitHub</div>
+            <div class="btn-large btn-twt" id="btn_twt">@NerdWhoCodes on Twitter</div>
     </div>
     
     <div class="tools">
@@ -98,15 +98,13 @@
 
     </div>
     
-    <div class="footer">Help<div class="descr"><br>Use the Tools menu to create the css styles you want.<br><br>When done, click the<br>[Get CSS] button.</div></div>
-    
     <div class="app-by">Created by @NerdWhoCodes</div>
     
     <div id="handles" class="hidddenUI">
-    <div class="handle h-top"></div>
-    <div class="handle h-bottom"></div>
-    <div class="handle h-left"></div>
-    <div class="handle h-right"></div>
+        <div class="handle h-top"></div>
+        <div class="handle h-bottom"></div>
+        <div class="handle h-left"></div>
+        <div class="handle h-right"></div>
     </div>
     
     <script>
@@ -119,6 +117,5 @@
       ga('send', 'pageview');
     
     </script>
-    
 </body>
 </html>
