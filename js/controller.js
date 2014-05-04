@@ -31,9 +31,10 @@ window.onload = function() {
 	
 	if ("undefined" !== typeof window.BOXITEM) {
 	    window.BOXITEM.removeClass("is-dragging");
+	    $("body").removeClass("mode-grabbing");
 	}
 	
-	$(".resize-dir").removeClass("resize-dir")
+	$(".resize-dir").removeClass("resize-dir");
     })
     
     .on("mousedown", "#content", function(ev){
@@ -42,7 +43,6 @@ window.onload = function() {
     })
    
     .on("mousemove", "#content", function(ev) {
-	
 	ev.stopPropagation();
 	if (isMovingLayer) {
 	    $("#content").addClass("is-dragging");
@@ -111,6 +111,7 @@ window.onload = function() {
     $(".handle")
     .on("mousedown", function(){
 	$(this).addClass("resize-dir");
+	$("body").addClass("mode-grabbing");
     });
     
     $("#handles")
@@ -188,7 +189,7 @@ window.onload = function() {
 	    setPosDisplay(window.BOXITEM.offset().top-35, new_x);
 	    boxResizeEvt();
 	    
-	     if (mouseStillDown) { clearInterval(mouseInterval); mouseInterval = setInterval(function(){ return mouseDownFunc(); }, 50); }
+	    if (mouseStillDown) { clearInterval(mouseInterval); mouseInterval = setInterval(function(){ return mouseDownFunc(); }, 50); }
 	};
 	
 	mouseDownFunc();
@@ -209,7 +210,7 @@ window.onload = function() {
 	    setPosDisplay(window.BOXITEM.offset().top-35, new_x);
 	    boxResizeEvt();
 	
-	     if (mouseStillDown) { clearInterval(mouseInterval); mouseInterval = setInterval(function(){ return mouseDownFunc(); }, 50); }
+	    if (mouseStillDown) { clearInterval(mouseInterval); mouseInterval = setInterval(function(){ return mouseDownFunc(); }, 50); }
 	};
 	
 	mouseDownFunc();
@@ -225,7 +226,7 @@ window.onload = function() {
 	    setPosDisplay(new_x, window.BOXITEM.offset().left-160);
 	    boxResizeEvt();
 	    
-	     if (mouseStillDown) { clearInterval(mouseInterval); mouseInterval = setInterval(function(){ return mouseDownFunc(); }, 50); }
+	    if (mouseStillDown) { clearInterval(mouseInterval); mouseInterval = setInterval(function(){ return mouseDownFunc(); }, 50); }
 	};
 	
 	mouseDownFunc();
@@ -241,7 +242,7 @@ window.onload = function() {
 	    setPosDisplay(new_x, window.BOXITEM.offset().left-160);
 	    boxResizeEvt();
 	    
-	     if (mouseStillDown) { clearInterval(mouseInterval); mouseInterval = setInterval(function(){ return mouseDownFunc(); }, 50); }
+	    if (mouseStillDown) { clearInterval(mouseInterval); mouseInterval = setInterval(function(){ return mouseDownFunc(); }, 50); }
 	};
 	
 	mouseDownFunc();
@@ -257,7 +258,7 @@ window.onload = function() {
 	    setSizeDisplay(window.BOXITEM.outerHeight(), new_x);
 	    boxResizeEvt();
 	    
-	     if (mouseStillDown) { clearInterval(mouseInterval); mouseInterval = setInterval(function(){ return mouseDownFunc(); }, 50); }
+	    if (mouseStillDown) { clearInterval(mouseInterval); mouseInterval = setInterval(function(){ return mouseDownFunc(); }, 50); }
 	};
 	
 	mouseDownFunc();
@@ -273,7 +274,7 @@ window.onload = function() {
 	    setSizeDisplay(new_x, window.BOXITEM.outerWidth());
 	    boxResizeEvt();
 	    
-	     if (mouseStillDown) { clearInterval(mouseInterval); mouseInterval = setInterval(function(){ return mouseDownFunc(); }, 50); }
+	    if (mouseStillDown) { clearInterval(mouseInterval); mouseInterval = setInterval(function(){ return mouseDownFunc(); }, 50); }
 	};
 	
 	mouseDownFunc();
@@ -296,7 +297,7 @@ window.onload = function() {
 	    setSizeDisplay(window.BOXITEM.outerHeight(), new_x);
 	    boxResizeEvt();
 	    
-	     if (mouseStillDown) { clearInterval(mouseInterval); mouseInterval = setInterval(function(){ return mouseDownFunc(); }, 50); }
+	    if (mouseStillDown) { clearInterval(mouseInterval); mouseInterval = setInterval(function(){ return mouseDownFunc(); }, 50); }
 	};
 	
 	mouseDownFunc();
@@ -319,7 +320,7 @@ window.onload = function() {
 	    setSizeDisplay(new_x, window.BOXITEM.outerWidth());
 	    boxResizeEvt();
 	    
-	     if (mouseStillDown) { clearInterval(mouseInterval); mouseInterval = setInterval(function(){ return mouseDownFunc(); }, 50); }
+	    if (mouseStillDown) { clearInterval(mouseInterval); mouseInterval = setInterval(function(){ return mouseDownFunc(); }, 50); }
 	};
 	
 	mouseDownFunc();

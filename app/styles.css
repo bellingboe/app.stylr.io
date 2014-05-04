@@ -32,6 +32,14 @@ body {
     font-family: 'Open Sans', sans-serif;
 }
 
+.mode-grabbing,
+.mode-grabbing .top-titlebar,
+.mode-grabbing .tools {
+    cursor: -moz-grabbing;
+    cursor: -webkit-grabbing;
+    cursor: grabbing;
+}
+
 .top-titlebar-text{
     display: none;
 }
@@ -50,8 +58,8 @@ body {
     text-shadow: 1px 1px 3px rgba(119, 119, 119, 0.4);
     font-size: 46pt;
     color: rgb(36, 68, 143);
-  -webkit-user-select: none;
-  -webkit-app-region: drag;
+    -webkit-user-select: none;
+    -webkit-app-region: drag;
 }
 
 .scene-disc {
@@ -425,7 +433,7 @@ body {
 }
 
 .top-titlebar-close-button img {
-display: none;
+    display: none;
 }
 
 .top-titlebar-close-button.app-title {

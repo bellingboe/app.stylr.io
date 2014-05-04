@@ -35,8 +35,6 @@ if (!get_uid) {
     window.user.uid = get_uid;
 }
 
-
-
 function switchLayers(a, b) {
     if (a.attr("id") !== b.attr("id")) {
       setActiveBox(a);
@@ -54,9 +52,9 @@ function boxResizeEvt() {
 
 function setActiveBox(b) {
     window.BOXITEM = b;
-    window.BOXITEM .addClass("edit-box");
-    window.BOXITEM .attr("id", "layer_"+layerCount);
-    window.BOXITEM .attr("data-active", "1");
+    window.BOXITEM.addClass("edit-box");
+    window.BOXITEM.attr("id", "layer_"+layerCount);
+    window.BOXITEM.attr("data-active", "1");
     
     setPosDisplay(b.offset().top-35,b.offset().left-160);
     setSizeDisplay(b.outerHeight(),b.outerWidth());
