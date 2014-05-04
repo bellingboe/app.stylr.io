@@ -400,7 +400,7 @@ window.onload = function() {
 	    boxResizeEvt();
         }});
 	
-	ga('send', 'app', 'workspace', 'new');
+	ga('send', 'app', 'newworkspace');
         
     });
     
@@ -449,6 +449,8 @@ window.onload = function() {
     });
 
     updateContentStyle();
+    
+    ga('send', 'app', 'landing');
 
     try {
 	nativeWindow.show();
