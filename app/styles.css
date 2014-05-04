@@ -36,6 +36,10 @@ body {
     display: none;
 }
 
+.scene-text {
+    font-weight: 300;
+}
+
 .scene-text, .scene-disc {
     position: absolute;
     z-index:1;
@@ -137,7 +141,7 @@ body {
 }
 
 .btn-new  {
-    top: 300px;
+    top: 200px;
     background: rgb(92, 214, 32);
 }
 
@@ -147,7 +151,7 @@ body {
 }
 
 .btn-gh {
-        top: 400px;
+        top: 300px;
         background: #283b4e;
 }
 
@@ -157,7 +161,7 @@ body {
 }
 
 .btn-twt {
-    top: 500px;
+    top: 400px;
     background: rgb(53, 106, 230);
 }
 
