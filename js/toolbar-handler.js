@@ -5,12 +5,37 @@ var layerCount = 0;
 var isMovingLayer = false;
 window.appOpen = false;
 
+window.user = {};
+window.user.uid = 0;
+
 try {
     var nativeWindow = require("nw.gui").Window.get();
     var gui = require('nw.gui');
 } catch (e) {
     isNative = false;
 }
+
+var guid = (function() {
+  function s4() {
+    return Math.floor((1 + Math.random()) * 0x10000)
+               .toString(16)
+               .substring(1);
+  }
+  return function() {
+    return s4() + s4() + '-' + s4() + '-' + s4() + '-' +
+           s4() + '-' + s4() + s4() + s4();
+  };
+})();
+
+var get_uid = window.localStorage.getItem("uid");
+if (!get_uid) {
+    window.user.uid = guid();
+    window.localStorage.setItem("uid", window.user.uid);
+} else {
+    window.user.uid = get_uid;
+}
+
+
 
 function switchLayers(a, b) {
     if (a.attr("id") !== b.attr("id")) {
