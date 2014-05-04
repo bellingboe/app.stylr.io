@@ -113,7 +113,7 @@ window.onload = function() {
 	    boxResizeEvt();
 	    
 	    setSizeDisplay(window.BOXITEM.outerHeight(),window.BOXITEM.outerWidth());
-	    setPosDisplay(window.BOXITEM.offset().top-35,window.BOXITEM.offset().left-160);
+	    setPosDisplay(window.BOXITEM.offset().top-35,window.BOXITEM.offset().left-260);
 	    
 	}
     });
@@ -185,7 +185,7 @@ window.onload = function() {
 	mouseDownFunc = function() {
 	    if (!mouseStillDown) { return; }
 	    
-	    var new_x = (window.BOXITEM.offset().left - 160) + 1;
+	    var new_x = (window.BOXITEM.offset().left - 260) + 1;
 	    window.BOXITEM.css({"left": new_x+"px"});
 	    setPosDisplay(window.BOXITEM.offset().top-35, new_x);
 	    boxResizeEvt();
@@ -206,7 +206,7 @@ window.onload = function() {
 	mouseDownFunc = function() {
 	    if (!mouseStillDown) { return; }
 	    
-	    var new_x = (window.BOXITEM.offset().left - 160) - 1;
+	    var new_x = (window.BOXITEM.offset().left - 260) - 1;
 	    window.BOXITEM.css({"left": new_x+"px"});
 	    setPosDisplay(window.BOXITEM.offset().top-35, new_x);
 	    boxResizeEvt();
@@ -224,7 +224,7 @@ window.onload = function() {
 	    
 	    var new_x = (window.BOXITEM.offset().top - 35) + 1;
 	    window.BOXITEM.css({"top": new_x+"px"});
-	    setPosDisplay(new_x, window.BOXITEM.offset().left-160);
+	    setPosDisplay(new_x, window.BOXITEM.offset().left-260);
 	    boxResizeEvt();
 	    
 	    if (mouseStillDown) { clearInterval(mouseInterval); mouseInterval = setInterval(function(){ return mouseDownFunc(); }, 50); }
@@ -240,7 +240,7 @@ window.onload = function() {
 	    
 	    var new_x = (window.BOXITEM.offset().top - 35) - 1;
 	    window.BOXITEM.css({"top": new_x+"px"});
-	    setPosDisplay(new_x, window.BOXITEM.offset().left-160);
+	    setPosDisplay(new_x, window.BOXITEM.offset().left-260);
 	    boxResizeEvt();
 	    
 	    if (mouseStillDown) { clearInterval(mouseInterval); mouseInterval = setInterval(function(){ return mouseDownFunc(); }, 50); }
@@ -397,7 +397,7 @@ window.onload = function() {
         
         $(".top-titlebar").animate({"top": "0px"}, {queue: false});
         
-        $("#content").animate({"left": "160px"}, {queue: false})
+        $("#content").animate({"left": "260px"}, {queue: false})
 	.animate({"opacity": "1.0"}, {queue: false});
 
         $(".tools").animate({"left": "0px"}, {queue: false, complete: function(){

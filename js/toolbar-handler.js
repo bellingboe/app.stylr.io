@@ -48,7 +48,7 @@ function setActiveBox(b) {
     window.BOXITEM = b;
     selectLayer(b);
     
-    setPosDisplay(b.offset().top-35,b.offset().left-160);
+    setPosDisplay(b.offset().top-35,b.offset().left-260);
     setSizeDisplay(b.outerHeight(),b.outerWidth());
     setBGDisplay(b.css('backgroundColor'));
     setLayerColor(b.css('backgroundColor'));
