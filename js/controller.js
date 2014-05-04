@@ -460,7 +460,7 @@ window.onload = function() {
 
     updateContentStyle();
     
-    ga('send', 'app', 'in-app', 'landing', {'page': '/app/'});
+    ga('send', 'event', 'pre-app', 'landing', {'page': '/app/'});
 
     try {
 	nativeWindow.show();
