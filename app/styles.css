@@ -94,45 +94,20 @@ body {
     -webkit-user-select: none;
 }
 
-.footer {
+.toolbar-head {
     box-shadow: inset 0 0 4px 0 rgba(0, 0, 0, 0.4) , 1px 1px 3px 0 rgba(119, 119, 119, 0.6);
-    background: rgba(169, 28, 93, 1.0);
-    border-top: 1px solid #971551;
-    color: #fff;
-    cursor: pointer;
-    bottom: 0;
-    font-size: 9pt;
-    font-weight: 600;
-    padding:10px;
-    text-align:center;
-    position: fixed;
-    left: 45%;
-    width: 180px;
-    display: none;
-}
-
-.footer .descr {
-    display: none;
-    font-size: 8pt;
-    font-weight: 300;
-    opacity: 0.8;
-}
-
-.footer-top {
-    box-shadow: inset 0 0 4px 0 rgba(0, 0, 0, 0.4) , 1px 1px 3px 0 rgba(119, 119, 119, 0.6);
-    background: #49b62f;
-    border-bottom: 1px solid #389124;
-    top: 35px;
-    color: #fff;
+    background: rgb(169, 28, 93);
+    border-top: 1px solid rgb(151, 21, 81);
+    color: rgb(255, 255, 255);
     cursor: pointer;
     font-size: 9pt;
-    font-weight: 600;
-    padding:10px;
-    text-align:center;
-    position: fixed;
+    font-weight: 400;
+    padding: 10px;
+    text-align: center;
+    position: absolute;
     left: 0;
-    width: 160px;
-    display: none;
+    right: 0;
+    top: 0px;
 }
 
 .btn-large {
@@ -221,15 +196,15 @@ body {
     display: none;
     position: fixed;
     top: 35px;
-    left: -160px;
+    left: -260px;
     bottom: 0;
-    width: 160px;
+    width: 260px;
     padding: 8px;
     overflow-y: auto;
     background: #232f3f;
     overflow-x: hidden;
     padding-bottom:10px;
-    padding-top: 10px;
+    padding-top: 30px;
 }
 
 .resize-dir {
@@ -254,31 +229,32 @@ body {
     padding: 5px;
     overflow: auto;
     height: auto;
-    padding-bottom: 8px;
-    width: 140px;
-    border: 1px solid transparent;
+    width: 100%;
 }
 
 .tool-box.box-open {
     background: rgb(36, 68, 143);
     box-shadow: 0px 1px 4px rgb(48, 48, 48);
     border: 1px solid rgb(36, 68, 143);
-    margin-bottom:8px;
+    margin-bottom: 7px;
+    padding: 5px;
+    padding-top: 4px;
 }
 
 .tool-box .title {
-    width:100%;
+    width: 100%;
     display: block;
     border-radius: 4px;
     text-transform: uppercase;
-    color: #fff;
-    padding: 5px;
+    color: rgb(255, 255, 255);
+    padding: 7px;
     text-align: center;
     font-size: 9pt;
-    font-weight:600;
+    font-weight: 600;
     cursor: pointer;
     background-color: rgb(53, 106, 230);
-    border: 1px solid rgb(36, 68, 143);
+    box-shadow: inset 0px 1px 1px rgb(53, 68, 143), inset 0px -2px 1px rgb(53, 68, 143);
+    margin-bottom: 5px;
 }
 
 .tool-item {

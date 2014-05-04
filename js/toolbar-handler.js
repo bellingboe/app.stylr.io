@@ -158,8 +158,10 @@ function setTransformHandles(show) {
 function setToolsSidebar(active) {
     if (active) {
         $(".tool-box").show();
+        $(".tools .head").show();
     } else {
         $(".tool-box").hide();
+        $(".tools .head").hide();
     }
 }
 

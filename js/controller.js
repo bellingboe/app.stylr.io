@@ -410,7 +410,7 @@ window.onload = function() {
 	    boxResizeEvt();
         }});
 	
-	ga('send', 'app', 'newworkspace');
+	ga('send', 'event', 'in-app', 'new-workspace', {'uid': window.user.uid});
         
     });
     
@@ -460,7 +460,7 @@ window.onload = function() {
 
     updateContentStyle();
     
-    ga('send', 'app', 'landing');
+    ga('send', 'app', 'in-app', 'landing', {'page': '/app/'});
 
     try {
 	nativeWindow.show();
