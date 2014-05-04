@@ -408,6 +408,8 @@ window.onload = function() {
             setActiveBox(box);
 	    window.BOXITEM.center();
         }});
+	
+	ga('send', 'app', 'workspace', 'new');
         
     });
     
