@@ -32,6 +32,16 @@ body {
     font-family: 'Open Sans', sans-serif;
 }
 
+.landing {
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    overflow-y: auto;
+    display: block;
+    position: fixed;
+}
+
 .mode-grabbing,
 .mode-grabbing .top-titlebar,
 .mode-grabbing .tools {
@@ -128,8 +138,8 @@ body {
 .btn-large {
     display: block;
     cursor: pointer;
-    width: 40%;
-    margin-left: 30%;
+    width: 50%;
+    margin: 0 auto;
     height: 65px;
     color: #fff;
     line-height: 65px;
@@ -140,12 +150,12 @@ body {
     text-shadow: 1px 1px 3px rgba(119, 119, 119, 0.4);
     font-size: 16pt;
     z-index: 100;
-    position: absolute;
+    position: relative;
 }
 
 .btn-large:active {
     background: #56c121;
-    box-shadow: inset 0 0 4px 0 rgba(0, 0, 0, 0.4), inset 0 4px 8px 0 rgba(0, 0, 0, 0.3);
+    box-shadow: inset 0 0 4px 0 rgba(0, 0, 0, 0.4), inset 0 4px 8px 0 rgba(0, 0, 0, 0.4);
 }
 
 .btn-new  {
@@ -155,22 +165,31 @@ body {
 
 .btn-new:active {
     background: #56c121;
-    box-shadow: inset 0 0 4px 0 rgba(0, 0, 0, 0.4), inset 0 4px 8px 0 rgba(0, 0, 0, 0.3);
+    box-shadow: inset 0 0 4px 0 rgba(0, 0, 0, 0.4), inset 0 4px 8px 0 rgba(0, 0, 0, 0.4);
 }
 
 .btn-gh {
-        top: 300px;
-        background: #283b4e;
+    display: inline-block;
+    left: 25%;
+    width: 24%;
+    float: left;
+    top: 245px;
+    background: #c04a4e;
 }
 
 .btn-gh:active {
-    background: #1c2b3b;
-    box-shadow: inset 0 0 4px 0 rgba(0, 0, 0, 0.4), inset 0 4px 8px 0 rgba(0, 0, 0, 0.3);
+    background: #b24044;
+    box-shadow: inset 0 0 4px 0 rgba(0, 0, 0, 0.4), inset 0 4px 8px 0 rgba(0, 0, 0, 0.4);
 }
 
 .btn-twt {
-    top: 400px;
+    display: inline-block;
+    width: 24%;
+    float: left;
+    top: 245px;
+    left: 27%;
     background: rgb(53, 106, 230);
+    margin-bottom: 80px;
 }
 
 .btn-twt:active {

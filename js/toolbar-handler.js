@@ -181,7 +181,7 @@ function selectLayer(layer) {
     layer.attr("id", "layer_"+layerCount);
     layer.attr("data-active", "1");
 
-    setTransformHandles(true);
+    //setTransformHandles(true);
     setToolsSidebar(true);
     layerSel = true;
 }

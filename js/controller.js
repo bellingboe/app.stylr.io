@@ -10,6 +10,18 @@ window.onresize = function() {
     updateContentStyle();
 }
 
+window.onscroll = function() {
+    if (window.BOXITEM && layerSel) {
+	setTransformHandles(true);
+    } 
+}
+
+window.onmousewheel = function() {
+    if (window.BOXITEM && layerSel) {
+	setTransformHandles(true);
+    } 
+}
+
 window.onload = function() {
 
     var mouseStillDown = false;
@@ -374,11 +386,9 @@ window.onload = function() {
         $(".top-titlebar").addClass("app-title");
         $(".top-titlebar-icon").addClass("app-title");
         
-        $(".scene-text").animate({"left": "160px"}, {queue: false});
-        $(".scene-disc").animate({"left": "160px"}, {queue: false});
-        $(".app-by").animate({"left": "160px"}, {queue: false});
-        $("#scene").animate({"left": "160px"}, {queue: false});
-        
+        $(".scene-text").fadeOut();
+        $(".scene-disc").fadeOut();
+        $(".app-by").fadeOut();
         $(".scene-text").fadeOut();
         $(".scene-disc").fadeOut();
         $(".app-by").fadeOut();
