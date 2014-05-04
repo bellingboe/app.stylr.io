@@ -12,7 +12,7 @@
     <script src="../js/toolbar-handler.js"></script>
     <script src="../js/titlebar.js"></script>
     
-    <link href='http://fonts.googleapis.com/css?family=Open+Sans:300,600' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:300,400,600' rel='stylesheet' type='text/css'>
     
     <link rel="stylesheet" media="screen" type="text/css" href="colorpicker/css/colorpicker.css" />
     <script type="text/javascript" src="colorpicker/js/colorpicker.js"></script>
@@ -20,18 +20,22 @@
     <script src="../js/controller.js"></script>
 </head>
 <body>
+    
+    <a href="https://twitter.com/share" class="twitter-share-button" data-url="http://app.stylr.io/app/?utm_campaign=twt" data-text="Easily turn mockups into real CSS with Stylr" data-hashtags="Stylr">Tweet</a>
+    <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
+    
     <div class="scene-text">Stylr</div>
     <div class="scene-disc">Visual CSS Mockups</div>
     
-    <div id="content">
-            <div class="btn-large btn-new" id="btn_new">New Workspace</div>
-            <div class="btn-large btn-gh" id="btn_gh">View Web App Source on GitHub</div>
-            <div class="btn-large btn-twt" id="btn_twt">@NerdWhoCodes on Twitter</div>
-    </div>
+    <div class="btn-large btn-new" id="btn_new">New Workspace</div>
+    <div class="btn-large btn-gh" id="btn_gh">View Web App Source on GitHub</div>
+    <div class="btn-large btn-twt" id="btn_twt">@NerdWhoCodes on Twitter</div>
+    
+    <div id="content"></div>
     
     <div class="tools">
         
-        <div class="footer-top get-layer-css" style="display: none;">Get CSS</div>
+        <div class="tool-header get-layer-css" style="display: none;">Get CSS</div>
         
         <div class="tool-box tool-position">
             <span class="title">Position</span>
@@ -98,7 +102,7 @@
 
     </div>
     
-    <div class="app-by">Created by @NerdWhoCodes</div>
+    <div class="app-by">&nbsp;</div>
     
     <div id="handles" class="hidddenUI">
         <div class="handle h-top"></div>
@@ -117,5 +121,6 @@
       ga('send', 'pageview');
     
     </script>
+    
 </body>
 </html>

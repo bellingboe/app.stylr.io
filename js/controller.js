@@ -108,7 +108,8 @@ window.onload = function() {
     
     // HANDLERS ==================================================================
     
-    $(".handle").on("mousedown", function(){
+    $(".handle")
+    .on("mousedown", function(){
 	$(this).addClass("resize-dir");
     });
     
@@ -150,7 +151,6 @@ window.onload = function() {
     })
 
     .on("layerResize", ".edit-box", function(ev){
-	//ev.stopPropagation();
 	setTransformHandles(true);
     })
     
@@ -377,6 +377,7 @@ window.onload = function() {
         $("#btn_gh").fadeOut();
 	$("#btn_twt").fadeOut();
         
+	$(".twitter-share-button").appendTo($(".top-titlebar")).show();
         $(".top-titlebar").css({"top": "-35px"});
         $(".top-titlebar-text").addClass("app-title").show();
         $(".top-titlebar-close-button").addClass("app-title");
@@ -396,15 +397,15 @@ window.onload = function() {
         
         $(".top-titlebar").animate({"top": "0px"}, {queue: false});
         
-        $("#content").animate({"left": "160px"}, {queue: false});
+        $("#content").animate({"left": "160px"}, {queue: false})
+	.animate({"opacity": "1.0"}, {queue: false});
+
         $(".tools").animate({"left": "0px"}, {queue: false, complete: function(){
             $(".footer").fadeIn();
-            //$(".footer-top").fadeIn();
             $("#content").css({"position": "absolute"});
             var box = $("<div>").hide().appendTo($("#content")).fadeIn();
 	    layerCount++;
             setActiveBox(box);
-	    
 	    window.BOXITEM.center();
         }});
         
@@ -422,7 +423,7 @@ window.onload = function() {
         $(this).siblings(".tool-content").toggle();
     });
     
-    $(".top-titlebar-close-button > img").attr("src", "button_close_hover.png");
+    //$(".top-titlebar-close-button > img").attr("src", "button_close_hover.png");
     
     $('#color_prev').ColorPicker({
 	color: '#fff',
@@ -455,7 +456,7 @@ window.onload = function() {
     });
 
     updateContentStyle();
-    
+
     try {
 	nativeWindow.show();
     } catch (e) {}

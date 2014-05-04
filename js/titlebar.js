@@ -56,7 +56,16 @@ function addTitlebar(titlebar_name, titlebar_icon_url, titlebar_text) {
   icon.setAttribute("class", titlebar_name + "-icon");
   icon.appendChild(createImage(titlebar_name + "icon", titlebar_icon_url));
   titlebar.appendChild(icon);
-
+  
+/*
+var twt = $("<a>")
+.attr("href", "https://twitter.com/share")
+.addClass("twitter-share-button")
+.attr("data-text", "http://app.stylr.io/app/?utm_campaign=twt")
+.attr("data-via", "NerdWhoCodes")
+.attr("data-hashtags", "Stylr");
+*/
+            
   var title = document.createElement("div");
   title.setAttribute("class", titlebar_name + "-text");
   title.innerText = titlebar_text;
@@ -73,10 +82,9 @@ function addTitlebar(titlebar_name, titlebar_icon_url, titlebar_text) {
 
   document.body.appendChild(titlebar);
   
-  var scene = createImage("scene", "");
+  /*var scene = createImage("scene", "");
   scene.setAttribute("class", "scene-screen");
-  
-  $("#content").append(scene);
+  $("#content").append(scene);*/
   
 }
 

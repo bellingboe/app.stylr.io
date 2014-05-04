@@ -7,8 +7,8 @@
 }
 
 html {
-  margin: 0px;
-  padding: 0px;
+  margin: 0;
+  padding: 0;
   overflow: hidden;
 }
 
@@ -29,7 +29,6 @@ body {
     margin: 0px;
     padding: 0px;
     background-color: rgba(222, 222, 222, 0.7);
-    background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAAKCAYAAACNMs+9AAAAJUlEQVQYV2M8efLkfwY0YG5uzoguxjgUFKI7GsTH5m4M3w1ChQDL9iTNLhPUIAAAAABJRU5ErkJggg==);
     font-family: 'Open Sans', sans-serif;
 }
 
@@ -58,7 +57,7 @@ body {
 }
 
 .scene-screen {
-    position: absolute;
+    position: fixed;
     width:100%;
     height:100%;
     top: 0;
@@ -67,10 +66,10 @@ body {
     bottom: 0;
     z-index: 0;
     display: block;
-    background: rgba(255, 255, 255, 0.6) url(scene.png);
+    background: rgba(255, 255, 255, 0.6); /*url(scene.png)*/
     background-position: center;
     background-repeat: no-repeat;
-  -webkit-user-select: none;
+    -webkit-user-select: none;
 }
 
 .footer {
@@ -171,15 +170,16 @@ body {
     width: 100%;
     padding: 10px;
     text-align: center;
-    color: rgba(0, 0, 0, 0.6);
-    position: absolute;
+    color: rgb(40, 59, 78);
+    position: fixed;
     bottom: 0;
-    font-size:12pt;
-    margin-top:15px;
+    font-size: 14pt;
+    margin-top: 16px;
     background: url(bar.png) repeat-x;
     background-position: bottom;
-    font-weight:600;
-    text-shadow: 1px 1px 3px rgba(119, 119, 119, 0.4);
+    font-weight: 400;
+    text-shadow: 1px 1px 7px rgb(255, 255, 255);
+    z-index: 999;
 }
 
 .bg-prev, .border-prev {
@@ -327,14 +327,18 @@ body {
     box-shadow: 1px 0 13px rgb(46, 46, 46);
 }
 
-div#content {
-    margin: 0px;
-    padding: 0px;
-    top:35px;
-    right:0;
-    left:0;
-    overflow:auto;
+#content {
+    margin: 0;
+    padding: 0;
+    top: 35px;
+    right: 0;
+    left: 0;
+    overflow: auto;
     bottom: 0;
+    opacity: 0;
+    background-color: rgba(222, 222, 222, 1.0);
+    background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAAKCAYAAACNMs+9AAAAJUlEQVQYV2M8efLkfwY0YG5uzoguxjgUFKI7GsTH5m4M3w1ChQDL9iTNLhPUIAAAAABJRU5ErkJggg==);
+    background-attachment: local;
 }
 
 .top-titlebar {
@@ -478,4 +482,11 @@ display: none;
 .handle.h-right {
     border-left: 2px dotted rgba(0, 0, 0, 0.7);
     padding: 5px;
+}
+
+.twitter-share-button {
+    display: none;
+    position: absolute;
+    top: 7px;
+    right: -15px;
 }
