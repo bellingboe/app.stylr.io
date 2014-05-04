@@ -35,15 +35,8 @@ if (!get_uid) {
     window.user.uid = get_uid;
 }
 
-function switchLayers(a, b) {
-    if (a.attr("id") !== b.attr("id")) {
+function switchLayers(a) {
       setActiveBox(a);
-      setTransformHandles(false);
-      layerSel = false;
-      return true;
-    } else {
-      return false;
-    }
 }
 
 function boxResizeEvt() {
@@ -51,10 +44,9 @@ function boxResizeEvt() {
 }
 
 function setActiveBox(b) {
+    disableLayer();
     window.BOXITEM = b;
-    window.BOXITEM.addClass("edit-box");
-    window.BOXITEM.attr("id", "layer_"+layerCount);
-    window.BOXITEM.attr("data-active", "1");
+    selectLayer(b);
     
     setPosDisplay(b.offset().top-35,b.offset().left-160);
     setSizeDisplay(b.outerHeight(),b.outerWidth());
@@ -62,7 +54,7 @@ function setActiveBox(b) {
     setLayerColor(b.css('backgroundColor'));
     setBorderDisplay(stripPx(b.css('borderWidth')), b.css('borderColor'));
     setCornerRadiusDisplay(stripPx(b.css('borderRadius')));
-    setTransformHandles();
+    setTransformHandles(true);
 }
 
 function setPosDisplay(t,l) {
@@ -115,49 +107,90 @@ function setTransformHandles(show) {
     var hb = $(".h-bottom");
     var hr = $(".h-right");
     var hl = $(".h-left");
-  
-    if ("undefined" !== typeof window.BOXITEM) {
-        ht.css({"width": window.BOXITEM.outerWidth(),
-                "top": window.BOXITEM.offset().top - 12,
-                "left": window.BOXITEM.offset().left});
-        if (show) {
-            ht.show();
-        } else {
-            ht.hide();
-        }
-        
-        if (stripPx($(".edit-box").css("borderWidth")) == 0) {
-            var borderOffset = 0;
-        } else {
-            var borderOffset = stripPx($(".edit-box").css("borderWidth"));
-        }
-        
-        hb.css({"width": window.BOXITEM.outerWidth(),
-                "top": (window.BOXITEM.offset().top + window.BOXITEM.height()) + (parseInt(borderOffset, 10) * 2),
-                "left": window.BOXITEM.offset().left});
-        if (show) {
-            hb.show();
-        } else {
-            hb.hide();
-        }
-        
-        hr.css({"top": window.BOXITEM.offset().top,
-                "left": window.BOXITEM.offset().left + window.BOXITEM.outerWidth(),
-                "height": window.BOXITEM.height()});
-        if (show) {
-            hr.show();
-        } else {
-            hr.hide();
-        }
-        
-        hl.css({"top": window.BOXITEM.offset().top,
-                "left": window.BOXITEM.offset().left - 12,
-                "height": window.BOXITEM.height()});
-        if (show) {
-            hl.show();
-        } else {
-            hl.hide();
-        }
+    
+    if (!window.BOXITEM) {
+        return;
     }
+  
+    ht.css({"width": window.BOXITEM.outerWidth(),
+            "top": window.BOXITEM.offset().top - 12,
+            "left": window.BOXITEM.offset().left});
+    if (show) {
+        ht.show();
+    } else {
+        ht.hide();
+    }
+    
+    if (stripPx($(".edit-box").css("borderWidth")) == 0) {
+        var borderOffset = 0;
+    } else {
+        var borderOffset = stripPx($(".edit-box").css("borderWidth"));
+    }
+    
+    hb.css({"width": window.BOXITEM.outerWidth(),
+            "top": (window.BOXITEM.offset().top + window.BOXITEM.height()) + (parseInt(borderOffset, 10) * 2),
+            "left": window.BOXITEM.offset().left});
+    if (show) {
+        hb.show();
+    } else {
+        hb.hide();
+    }
+    
+    hr.css({"top": window.BOXITEM.offset().top,
+            "left": window.BOXITEM.offset().left + window.BOXITEM.outerWidth(),
+            "height": window.BOXITEM.height()});
+    if (show) {
+        hr.show();
+    } else {
+        hr.hide();
+    }
+    
+    hl.css({"top": window.BOXITEM.offset().top,
+            "left": window.BOXITEM.offset().left - 12,
+            "height": window.BOXITEM.height()});
+    if (show) {
+        hl.show();
+    } else {
+        hl.hide();
+    }
+}
+
+function setToolsSidebar(active) {
+    if (active) {
+        $(".tool-box").show();
+    } else {
+        $(".tool-box").hide();
+    }
+}
+
+function disableLayer() {
+    if (window.BOXITEM) {
+        window.BOXITEM.attr("data-active", "0");
+        window.BOXITEM.removeClass("is-selected");
+        setTransformHandles(false);
+        setToolsSidebar(false);
+        layerSel = false;
+        window.BOXITEM = null;
+    }
+}
+
+function selectLayer(layer) {
+    layer.addClass("is-selected");
+    layer.attr("data-active", "1");
+    layer.addClass("edit-box");
+    layer.attr("id", "layer_"+layerCount);
+    layer.attr("data-active", "1");
+
+    setTransformHandles(true);
+    setToolsSidebar(true);
+    layerSel = true;
+}
+
+function isCurrentLayer(layer) {
+    if (window.BOXITEM) {
+        return (layer.attr("id") == window.BOXITEM.attr("id"));
+    }
+    
+    return false;
 
 }

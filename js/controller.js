@@ -28,13 +28,12 @@ window.onload = function() {
 	isMovingLayer = false;
 	$("#content").removeClass("is-dragging");
 	$(".handle").removeClass("is-dragging");
-	
-	if ("undefined" !== typeof window.BOXITEM) {
-	    window.BOXITEM.removeClass("is-dragging");
-	    $("body").removeClass("mode-grabbing");
-	}
-	
+	$("body").removeClass("mode-grabbing");
 	$(".resize-dir").removeClass("resize-dir");
+	
+	if (window.BOXITEM) {
+	    window.BOXITEM.removeClass("is-dragging");
+	}
     })
     
     .on("mousedown", "#content", function(ev){
@@ -44,6 +43,7 @@ window.onload = function() {
    
     .on("mousemove", "#content", function(ev) {
 	ev.stopPropagation();
+	
 	if (isMovingLayer) {
 	    $("#content").addClass("is-dragging");
 	    $(".handle").addClass("is-dragging");
@@ -143,11 +143,7 @@ window.onload = function() {
     $("#content")
     .on("mousedown", function(ev){
 	if (window.BOXITEM) {
-	    var b = window.BOXITEM;
-	    b.attr("data-active", "0");
-	    b.removeClass("is-selected");
-	    setTransformHandles(false);
-	    layerSel = false;
+	    disableLayer();
 	}
     })
 
@@ -157,23 +153,16 @@ window.onload = function() {
     
     .on("mousedown", ".edit-box", function(ev){
 	var a = $(this);
-	var b = window.BOXITEM;
-
-	var didSwitch = switchLayers(a, b);
-	if (!didSwitch) {
-	    if ($(this).hasClass("is-selected")) {
-	      $(this).removeClass("is-selected");
-	      $(this).attr("data-active", "0");
-	      setTransformHandles(false);
-	      layerSel = false;
-	    } else {
-	      $(this).addClass("is-selected");
-	      $(this).attr("data-active", "1");
-	      setTransformHandles(true);
-	      layerSel = true;
-	    }
+	var current = isCurrentLayer(a);
+	
+	if (!window.BOXITEM || !current) {
+	    switchLayers(a);
 	    ev.stopPropagation();
+	    
+	    return;
 	}
+
+	ev.stopPropagation();
     });
     
     // TOOLS ==================================================================
@@ -408,6 +397,7 @@ window.onload = function() {
 	    layerCount++;
             setActiveBox(box);
 	    window.BOXITEM.center();
+	    boxResizeEvt();
         }});
 	
 	ga('send', 'app', 'workspace', 'new');
