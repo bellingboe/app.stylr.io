@@ -410,7 +410,7 @@ window.onload = function() {
 	    boxResizeEvt();
         }});
 	
-	ga('send', 'event', 'in-app', 'new-workspace', {'&uid': window.user.uid});
+	ga('send', 'event', 'in-app', 'new-workspace', window.user.uid);
         ga('send', 'event', 'in-app', 'uid-checkin', window.user.uid);
     });
     
