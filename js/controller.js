@@ -330,6 +330,87 @@ window.onload = function() {
 	clearInterval(mouseInterval);
     });
     
+    /* ============================================
+    TOOL: blur
+    ============================================ */
+    
+    $(".tools").on("mousedown", ".blur-add", function(ev){
+	mouseStillDown = true;
+	mouseDownFunc = function() {
+	    if (!mouseStillDown) { return; }
+	    
+	    var blur_size = ($(".edit-box").css("-webkit-filter") || $(".edit-box").css("-moz-filter") || $(".edit-box").css("-ms-filter") || $(".edit-box").css("-o-filter"));
+	    var size_extract = (/blur\(([0-9]+)px\)/gi).exec(blur_size);
+	    
+	    console.log(size_extract);
+	    
+	    if (!size_extract) {
+		var real_size = "0px";
+	    } else {
+		var real_size = size_extract[1];
+	    }
+
+	    var size_int = parseInt(stripPx(real_size), 10);
+	    
+	    console.log(size_int);
+	    
+	    var size_parse = parseInt(size_int + 1, 10);
+	    
+	    $(".edit-box").css({"-webkit-filter":"blur("+size_parse+"px)",
+			       "-moz-filter":"blur("+size_parse+"px)",
+			       "-ms-filter":"blur("+size_parse+"px)",
+			       "-o-filter":"blur("+size_parse+"px)"});
+	    
+	    setBlurDisplay((size_int + 1));
+	    
+	    if (mouseStillDown) { clearInterval(mouseInterval); mouseInterval = setInterval(function(){ return mouseDownFunc(); }, 500); }
+	};
+	
+	mouseDownFunc();
+    }).mouseup(function(event) {
+	mouseStillDown = false;
+	clearInterval(mouseInterval);
+    });
+    
+    $(".tools").on("mousedown", ".blur-sub", function(ev){
+	mouseStillDown = true;
+	mouseDownFunc = function() {
+	    if (!mouseStillDown) { return; }
+
+	    var blur_size = ($(".edit-box").css("-webkit-filter") || $(".edit-box").css("-moz-filter") || $(".edit-box").css("-ms-filter") || $(".edit-box").css("-o-filter"));
+	    var size_extract = (/blur\(([0-9]+)px\)/gi).exec(blur_size);
+	    
+	    console.log(size_extract);
+	    
+	    if (!size_extract) {
+		var real_size = "0px";
+	    } else {
+		var real_size = size_extract[1];
+	    }
+
+	    var size_int = stripPx(real_size);
+	    var size_parse = parseInt(size_int - 1, 10);
+	    
+	    $(".edit-box").css({"-webkit-filter":"blur("+size_parse+"px)",
+			       "-moz-filter":"blur("+size_parse+"px)",
+			       "-ms-filter":"blur("+size_parse+"px)",
+			       "-o-filter":"blur("+size_parse+"px)"});
+	    
+	    setBlurDisplay((size_int - 1));
+	    
+	    if (mouseStillDown) { clearInterval(mouseInterval); mouseInterval = setInterval(function(){ return mouseDownFunc(); }, 500); }
+	};
+	
+	mouseDownFunc();
+    }).mouseup(function(event) {
+	mouseStillDown = false;
+	clearInterval(mouseInterval);
+    });
+    
+    /* ============================================
+    TOOL: border
+    ============================================ */
+    
     $(".tools").on("mousedown", ".bord-add", function(ev){
 	    var border = parseInt(stripPx(window.BOXITEM.css("borderWidth")), 10) + 1;
 	    setBorderDisplay(border, window.BOXITEM.css("borderColor"));
@@ -339,6 +420,10 @@ window.onload = function() {
 	    var border = parseInt(stripPx(window.BOXITEM.css("borderWidth")), 10) - 1;
 	    setBorderDisplay(border, window.BOXITEM.css("borderColor"));
     });
+    
+    /* ============================================
+    TOOL: border radius
+    ============================================ */
     
     $(".tools").on("mousedown", ".corner-add", function(ev){
 	    var border = parseInt(stripPx(window.BOXITEM.css("borderRadius")), 10) + 1;

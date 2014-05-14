@@ -102,6 +102,10 @@ function setCornerRadiusDisplay(cr) {
     $(".corner-width").html(cr);
 }
 
+function setBlurDisplay(b) {
+    $(".blur-width").html(b);
+}
+
 function setTransformHandles(show) {
     var ht = $(".h-top");
     var hb = $(".h-bottom");
