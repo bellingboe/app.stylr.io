@@ -206,11 +206,11 @@ body {
 }
 
 .resize-dir {
-    background: rgba(123, 126, 129, 0.7);
+    background: rgba(123, 126, 129, 0.3);
 }
 
 .handle:hover {
-    background: rgba(123, 126, 129, 0.7);
+    background: rgba(123, 126, 129, 0.3);
 }
 
 .blur {
