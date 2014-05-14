@@ -113,8 +113,8 @@ function setTransformHandles(show) {
     }
   
     ht.css({"width": window.BOXITEM.outerWidth(),
-            "top": window.BOXITEM.offset().top - 12,
-            "left": window.BOXITEM.offset().left});
+            "top": (window.BOXITEM.offset().top - 11) - 35,
+            "left": window.BOXITEM.offset().left - 260});
     if (show) {
         ht.show();
     } else {
@@ -128,16 +128,16 @@ function setTransformHandles(show) {
     }
     
     hb.css({"width": window.BOXITEM.outerWidth(),
-            "top": (window.BOXITEM.offset().top + window.BOXITEM.height()) + (parseInt(borderOffset, 10) * 2),
-            "left": window.BOXITEM.offset().left});
+            "top": (window.BOXITEM.offset().top + window.BOXITEM.height()) + (parseInt(borderOffset, 10) * 2) - 35,
+            "left": window.BOXITEM.offset().left - 260});
     if (show) {
         hb.show();
     } else {
         hb.hide();
     }
     
-    hr.css({"top": window.BOXITEM.offset().top,
-            "left": window.BOXITEM.offset().left + window.BOXITEM.outerWidth(),
+    hr.css({"top": window.BOXITEM.offset().top - 35,
+            "left": (window.BOXITEM.offset().left + window.BOXITEM.outerWidth()) - 260,
             "height": window.BOXITEM.height()});
     if (show) {
         hr.show();
@@ -145,8 +145,8 @@ function setTransformHandles(show) {
         hr.hide();
     }
     
-    hl.css({"top": window.BOXITEM.offset().top,
-            "left": window.BOXITEM.offset().left - 12,
+    hl.css({"top": window.BOXITEM.offset().top - 35,
+            "left": (window.BOXITEM.offset().left - 11) - 260,
             "height": window.BOXITEM.height()});
     if (show) {
         hl.show();
