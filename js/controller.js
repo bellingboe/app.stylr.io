@@ -341,9 +341,7 @@ window.onload = function() {
 	    
 	    var blur_size = ($(".edit-box").css("-webkit-filter") || $(".edit-box").css("-moz-filter") || $(".edit-box").css("-ms-filter") || $(".edit-box").css("-o-filter"));
 	    var size_extract = (/blur\(([0-9]+)px\)/gi).exec(blur_size);
-	    
-	    console.log(size_extract);
-	    
+
 	    if (!size_extract) {
 		var real_size = "0px";
 	    } else {
@@ -351,9 +349,6 @@ window.onload = function() {
 	    }
 
 	    var size_int = parseInt(stripPx(real_size), 10);
-	    
-	    console.log(size_int);
-	    
 	    var size_parse = parseInt(size_int + 1, 10);
 	    
 	    $(".edit-box").css({"-webkit-filter":"blur("+size_parse+"px)",
@@ -379,9 +374,7 @@ window.onload = function() {
 
 	    var blur_size = ($(".edit-box").css("-webkit-filter") || $(".edit-box").css("-moz-filter") || $(".edit-box").css("-ms-filter") || $(".edit-box").css("-o-filter"));
 	    var size_extract = (/blur\(([0-9]+)px\)/gi).exec(blur_size);
-	    
-	    console.log(size_extract);
-	    
+
 	    if (!size_extract) {
 		var real_size = "0px";
 	    } else {
