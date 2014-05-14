@@ -470,22 +470,22 @@ body {
 }
 
 .handle.h-top {
-    border-bottom: 2px dotted rgba(0, 0, 0, 0.7);
+    border-bottom: 1px dotted rgba(0, 0, 0, 0.7);
     padding: 5px;
 }
 
 .handle.h-bottom {
-    border-top: 2px dotted rgba(0, 0, 0, 0.7);
+    border-top: 1px dotted rgba(0, 0, 0, 0.7);
     padding: 5px;
 }
 
 .handle.h-left{
-    border-right: 2px dotted rgba(0, 0, 0, 0.7);
+    border-right: 1px dotted rgba(0, 0, 0, 0.7);
     padding: 5px;
 }
 
 .handle.h-right {
-    border-left: 2px dotted rgba(0, 0, 0, 0.7);
+    border-left: 1px dotted rgba(0, 0, 0, 0.7);
     padding: 5px;
 }
 
