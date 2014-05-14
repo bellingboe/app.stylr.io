@@ -111,7 +111,7 @@ function updateContentStyle() {
     height -= titlebar.offsetHeight;
     top += titlebar.offsetHeight;
   } else {
-    addTitlebar("top-titlebar", "top-titlebar.png", "Stlyr");
+    addTitlebar("top-titlebar", "top-titlebar.png", "Stylr");
   }
 
 }
