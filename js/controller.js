@@ -434,6 +434,10 @@ window.onload = function() {
     Interface elements
     ============================================ */
     
+    $(".get-css").on("click", function(){
+	alert(window.BOXITEM[0].style.cssText);
+    });
+    
     $("#btn_gh").on("click", function(ev){
 	if (isNative) {
 	    gui.Shell.openExternal('https://github.com/bellingboe/app.stylr.io');
@@ -482,6 +486,9 @@ window.onload = function() {
             $(".footer").fadeIn();
             $("#content").css({"position": "absolute"});
             var box = $("<div>").hide().appendTo($("#content")).fadeIn();
+	    $(".btn-get-css").fadeIn();
+	    $(".head").fadeIn();
+	    
 	    layerCount++;
             setActiveBox(box);
 	    window.BOXITEM.center();
