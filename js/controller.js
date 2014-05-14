@@ -477,23 +477,29 @@ window.onload = function() {
         $(".tools").fadeIn();
         $("#scene").fadeOut();
         
-        $(".top-titlebar").animate({"top": "0px"}, {queue: false});
+        $(".top-titlebar")
+	    .animate({"top": "0px"}, {queue: false});
         
-        $("#content").animate({"left": "260px"}, {queue: false})
-	.animate({"opacity": "1.0"}, {queue: false});
+        $("#content")
+	    .animate({"left": "260px",
+		     "opacity": "1.0"}, {queue: false});
+	
+	$(".btn-get-css")
+	    .animate({"top": "0px"}, {queue: false});
 
-        $(".tools").animate({"left": "0px"}, {queue: false, complete: function(){
-            $(".footer").fadeIn();
-            $("#content").css({"position": "absolute"});
-            var box = $("<div>").hide().appendTo($("#content")).fadeIn();
-	    $(".btn-get-css").fadeIn();
-	    $(".head").fadeIn();
-	    
-	    layerCount++;
-            setActiveBox(box);
-	    window.BOXITEM.center();
-	    boxResizeEvt();
-        }});
+        $(".tools")
+	    .animate({"left": "0px"}, {queue: false, complete: function(){	
+		$(".footer").fadeIn();
+		$("#content").css({"position": "absolute"});
+		var box = $("<div>").hide().appendTo($("#content")).fadeIn();
+		$(".btn-get-css").animate({"top": "0px"});
+		$(".head").fadeIn();
+		
+		layerCount++;
+		setActiveBox(box);
+		window.BOXITEM.center();
+		boxResizeEvt();
+	    }});
 	
 	ga('send', 'event', 'in-app', 'new-workspace', window.user.uid);
         ga('send', 'event', 'in-app', 'uid-checkin', window.user.uid);
