@@ -95,17 +95,17 @@ body {
 }
 
 .toolbar-head {
-    background: rgba(12, 18, 27, 0.4);
+    background: rgba(12, 18, 27, 0.9);
     color: rgb(255, 255, 255);
     cursor: pointer;
     font-size: 9pt;
     font-weight: 400;
     padding: 10px;
     text-align: center;
-    position: absolute;
+    position: fixed;
     left: 0;
-    right: 0;
-    top: 0px;
+    top: 35px;
+    width: 248px;
 }
 
 .btn-large {
