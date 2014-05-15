@@ -528,7 +528,21 @@ window.onload = function() {
     ============================================ */
     
     $(".get-css").on("click", function(){
-	alert(window.BOXITEM[0].style.cssText);
+	var css_list = window.BOXITEM[0].style.cssText.split("; ");
+	var css_msg = "";
+	var semi = ";";
+	
+	$.each(css_list, function(i, v){
+	    var css = v.split(": ");
+	    
+	    if (css[1].indexOf(";") >= 0) {
+		semi = "";
+	    }
+	    
+	    css_msg += "<span class='css-item'><span class='css-attr'>"+css[0]+"</span>: "+css[1]+""+semi+"</span><br>";
+	});
+	
+	showMessage("Your CSS", css_msg, 10);
     });
     
     $("#btn_gh").on("click", function(ev){

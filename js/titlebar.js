@@ -62,7 +62,7 @@ function addTitlebar(titlebar_name, titlebar_icon_url, titlebar_text) {
   btn.innerHTML = "?";
   btn.setAttribute("id", "action-help");
   btn.onclick = function(){
-    showMessage("How to Use Stylr", "1. Use the tools on the left, once you have a layer selected.<br><br>2. You can resize each layer by selecting it, then draging any of the sides.<br><br>If you want to move the layer without changing with size, hold down CTRL when dragging the side.", 2.5);
+    showMessage("How to Use Stylr", "1. Use the tools on the left, once you have a layer selected.<br><br>2. You can resize each layer by selecting it, then draging any of the sides.<br><br>If you want to move the layer without changing with size, hold down CTRL when dragging the side.", 10);
   };
   
   titlebar.appendChild(btn);
