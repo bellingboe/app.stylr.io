@@ -55,6 +55,10 @@ function setActiveBox(b) {
     setBorderDisplay(stripPx(b.css('borderWidth')), b.css('borderColor'));
     setCornerRadiusDisplay(stripPx(b.css('borderRadius')));
     setTransformHandles(true);
+    
+    var op = parseFloat(stripPx(window.BOXITEM.css("opacity")));
+    op = op.toFixed(1);
+    setOpacityDisplay(op);
 }
 
 function setPosDisplay(t,l) {

@@ -66,6 +66,16 @@ function addTitlebar(titlebar_name, titlebar_icon_url, titlebar_text) {
   };
   
   titlebar.appendChild(btn);
+
+  var btn2 = document.createElement("div");
+  btn2.setAttribute("class", "toolbar-action action-gh");
+  btn2.innerHTML = "View on GitHub";
+  btn2.setAttribute("id", "action-gh");
+  btn2.onclick = function(){
+    showMessage("Help Make Stylr Better", "We'd LOVE it if you'd help (me) build this project! It's simple. The repo is public, andyone can see and contrbute to it.<br><br> <a href='https://github.com/bellingboe/app.stylr.io' target='_blank'>View Source on GitHub</a>", 10);
+  };
+  
+  titlebar.appendChild(btn2);
   
 /*
 var twt = $("<a>")
