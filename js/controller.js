@@ -36,21 +36,55 @@ window.onload = function() {
         $(this).children(".descr").slideToggle();
     })
     
+    .on("keydown", function(ev){
+        if (ev.ctrlKey) {
+	    $("body")
+		.addClass("mode-grabbing")
+		.removeClass("mode-pos-u")
+		.removeClass("mode-pos-d")
+		.removeClass("mode-pos-l")
+		.removeClass("mode-pos-r");
+	}
+    })
+    
+    .on("keyup", function(ev){
+	console.log(ev);
+	
+        if (ev.keyCode == 17) {
+	    $("body")
+		.removeClass("mode-pos-u")
+		.removeClass("mode-pos-d")
+		.removeClass("mode-pos-l")
+		.removeClass("mode-pos-r")
+		.removeClass("mode-grabbing");
+	}
+    })
+    
     .on("mouseup", function(ev) {
 	isMovingLayer = false;
-	$("#content").removeClass("is-dragging");
-	$(".handle").removeClass("is-dragging");
-	$("body").removeClass("mode-grabbing");
-	$(".resize-dir").removeClass("resize-dir");
+	
+	$("#content")
+	    .removeClass("is-dragging");
+	    
+	$("body")
+	    .removeClass("mode-grabbing")
+	    .removeClass("mode-pos-u")
+	    .removeClass("mode-pos-d")
+	    .removeClass("mode-pos-l")
+	    .removeClass("mode-pos-r")
+	    
+	$(".resize-dir")
+	    .removeClass("resize-dir");
 	
 	if (window.BOXITEM) {
-	    window.BOXITEM.removeClass("is-dragging");
+	    window.BOXITEM
+		.removeClass("is-dragging");
 	}
     })
     
     .on("mousedown", "#content", function(ev){
-	isMovingLayer = false;
-	setTransformHandles(false);
+	//isMovingLayer = false;
+	//setTransformHandles(false);
     })
    
     .on("mousemove", "#content", function(ev) {
@@ -58,16 +92,23 @@ window.onload = function() {
 	
 	if (isMovingLayer) {
 	    $("#content").addClass("is-dragging");
-	    $(".handle").addClass("is-dragging");
 	    window.BOXITEM.addClass("is-dragging");
 	    
 	    switch (resizeDir) {
 		case 1: // UP
 		     if (ev.ctrlKey) {
+			$("body")
+			    .addClass("mode-grabbing")
+			    .removeClass("mode-pos-u");
+			    
 			var top = window.BOXITEM.offset().top;
 			var diff =  ev.pageY - top;
 			window.BOXITEM.css("top", (parseInt(window.BOXITEM.css("top"))+diff)+"px");
 		     } else {
+			$("body")
+			    .removeClass("mode-grabbing")
+			    .addClass("mode-pos-u");
+			    
 			var top= window.BOXITEM.offset().top;
 			var diff =  ev.pageY - top;
 			window.BOXITEM.css("height", (window.BOXITEM.height()-diff)+"px");
@@ -76,10 +117,18 @@ window.onload = function() {
 		break; 
 		case 2: // DOWN
 		     if (ev.ctrlKey) {
+			$("body")
+			    .addClass("mode-grabbing")
+			    .removeClass("mode-pos-d");
+			    
 			var top = window.BOXITEM.offset().top + window.BOXITEM.height();
 			var diff =  ev.pageY - top;
 			window.BOXITEM.css("top", (parseInt(window.BOXITEM.css("top"))+diff)+"px");
 		    } else {
+			$("body")
+			    .removeClass("mode-grabbing")
+			    .addClass("mode-pos-d");
+			    
 			var bottom = window.BOXITEM.offset().top + window.BOXITEM.height();
 			var diff =  ev.pageY - bottom;
 			window.BOXITEM.css("height", (window.BOXITEM.height()+diff)+"px");
@@ -87,10 +136,18 @@ window.onload = function() {
 		break;
 		case 3: // LEFT
 		    if (ev.ctrlKey) {
+			$("body")
+			    .addClass("mode-grabbing")
+			    .removeClass("mode-pos-l");
+			    
 			var left = window.BOXITEM.offset().left;
 			var diff =  ev.pageX - left;
 			window.BOXITEM.css("left", (parseInt(window.BOXITEM.css("left"))+diff)+"px");
 		    } else {
+			$("body")
+			    .removeClass("mode-grabbing")
+			    .addClass("mode-pos-l");
+			    
 			var left = window.BOXITEM.offset().left;
 			var diff =  ev.pageX - left;
 			window.BOXITEM.css("width", (window.BOXITEM.width()-diff)+"px");
@@ -99,10 +156,18 @@ window.onload = function() {
 		break;
 		case 4: // RIGHT
 		    if (ev.ctrlKey) {
+			$("body")
+			    .addClass("mode-grabbing")
+			    .removeClass("mode-pos-r");
+			    
 			var left = window.BOXITEM.offset().left + window.BOXITEM.width();
 			var diff =  ev.pageX - left;
 			window.BOXITEM.css("left", (parseInt(window.BOXITEM.css("left"))+diff)+"px");
-		    } else{
+		    } else {
+			$("body")
+			    .removeClass("mode-grabbing")
+			    .addClass("mode-pos-r");
+			    
 			var right = window.BOXITEM.offset().left + window.BOXITEM.width();
 			var diff =  ev.pageX - right;
 			window.BOXITEM.css("width", (window.BOXITEM.width()+diff)+"px");
@@ -123,7 +188,6 @@ window.onload = function() {
     $(".handle")
     .on("mousedown", function(){
 	$(this).addClass("resize-dir");
-	$("body").addClass("mode-grabbing");
     });
     
     $("#handles")
@@ -155,7 +219,8 @@ window.onload = function() {
     $("#content")
     .on("mousedown", function(ev){
 	if (window.BOXITEM) {
-	    disableLayer();
+	    //disableLayer();
+	    ev.stopPropagation();
 	}
     })
 

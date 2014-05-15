@@ -3,7 +3,6 @@
     margin: 0;
     padding: 0;
     -webkit-user-select: none;
-    cursor: default;
 }
 
 html {
@@ -479,29 +478,51 @@ body {
     position: absolute;
 }
 .is-dragging {
-    cursor: -moz-grabbing;
-    cursor: -webkit-grabbing;
-    cursor: grabbing;
+
 }
 
 .handle.h-top {
     border-bottom: 1px dotted rgba(0, 0, 0, 0.7);
     padding: 5px;
+    
+    cursor: -webkit-n-resize;
+    cursor: -moz-n-resize;
+    cursor: -ms-n-resize;
+    cursor: -o-n-resize;
+    cursor: n-resize;
 }
 
 .handle.h-bottom {
     border-top: 1px dotted rgba(0, 0, 0, 0.7);
     padding: 5px;
+    
+    cursor: -webkit-s-resize;
+    cursor: -moz-s-resize;
+    cursor: -ms-s-resize;
+    cursor: -o-s-resize;
+    cursor: s-resize;
 }
 
 .handle.h-left{
     border-right: 1px dotted rgba(0, 0, 0, 0.7);
     padding: 5px;
+    
+    cursor: -webkit-e-resize;
+    cursor: -moz-e-resize;
+    cursor: -ms-e-resize;
+    cursor: -o-e-resize;
+    cursor: e-resize;
 }
 
 .handle.h-right {
     border-left: 1px dotted rgba(0, 0, 0, 0.7);
     padding: 5px;
+    
+    cursor: -webkit-w-resize;
+    cursor: -moz-w-resize;
+    cursor: -ms-w-resize;
+    cursor: -o-w-resize;
+    cursor: w-resize;
 }
 
 .twitter-share-button {
@@ -509,4 +530,52 @@ body {
     position: absolute;
     top: 7px;
     right: -15px;
+}
+
+body.mode-grabbing .handle {
+    cursor: -webkit-grab;
+    cursor: -moz-grab;
+    cursor: -ms-grab;
+    cursor: -o-grab;
+    cursor: grab;
+}
+
+body.mode-grabbing {
+    cursor: -webkit-grab;
+    cursor: -moz-grab;
+    cursor: -ms-grab;
+    cursor: -o-grab;
+    cursor: grab;
+}
+
+body.mode-pos-u {
+    cursor: -webkit-n-resize;
+    cursor: -moz-n-resize;
+    cursor: -ms-n-resize;
+    cursor: -o-n-resize;
+    cursor: n-resize;
+}
+
+body.mode-pos-d {
+    cursor: -webkit-s-resize;
+    cursor: -moz-s-resize;
+    cursor: -ms-s-resize;
+    cursor: -o-s-resize;
+    cursor: s-resize;
+}
+
+body.mode-pos-l {
+    cursor: -webkit-e-resize;
+    cursor: -moz-e-resize;
+    cursor: -ms-e-resize;
+    cursor: -o-e-resize;
+    cursor: e-resize;
+}
+
+body.mode-pos-r {
+    cursor: -webkit-w-resize;
+    cursor: -moz-w-resize;
+    cursor: -ms-w-resize;
+    cursor: -o-w-resize;
+    cursor: w-resize;
 }
