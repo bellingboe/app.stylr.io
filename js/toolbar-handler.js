@@ -159,6 +159,10 @@ function setTransformHandles(show) {
     }
 }
 
+function setOpacityDisplay(o) {
+     $(".opacity-display").html(o);
+}
+
 function setToolsSidebar(active) {
     if (active) {
         $(".tool-box").show();

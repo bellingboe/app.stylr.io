@@ -499,6 +499,29 @@ window.onload = function() {
     });
     
     /* ============================================
+    TOOL: opacity
+    ============================================ */
+    
+    $(".tools").on("mousedown", ".add-opacity", function(ev){
+	    var op = parseFloat(stripPx(window.BOXITEM.css("opacity")), 1) + 0.1;
+	    
+	    if (op <= 0.9) {
+		window.BOXITEM.css("opacity", op);
+		setOpacityDisplay(op);
+	    }
+    });
+    
+    $(".tools").on("mousedown", ".sub-opacity", function(ev){
+	    var op = parseFloat(stripPx(window.BOXITEM.css("opacity")), 1) - 0.1;
+	    
+	    if (op >= 0.1) {
+		window.BOXITEM.css("opacity", op);
+		setOpacityDisplay(op);
+	    }
+
+    });
+    
+    /* ============================================
     Interface elements
     ============================================ */
     
@@ -561,7 +584,7 @@ window.onload = function() {
             $("#content").css({"position": "absolute"});
             var box = $("<div>").hide().appendTo($("#content")).fadeIn();
 	    $(".btn-get-css").appendTo($(".top-titlebar")).fadeIn();
-	    $(".head").fadeIn();
+	    //$(".head").fadeIn();
 	    
 	    layerCount++;
             setActiveBox(box);

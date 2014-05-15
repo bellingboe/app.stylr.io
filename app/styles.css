@@ -101,10 +101,10 @@ body {
     font-weight: 400;
     padding: 10px;
     text-align: center;
-    position: fixed;
     left: 0;
-    top: 35px;
+    margin-top: 10px;
     width: 248px;
+    margin-bottom: 5px;
 }
 
 .btn-large {
@@ -201,21 +201,18 @@ body {
 
 .tools {
     display: none;
-    position: fixed;
     top: 35px;
     left: -260px;
     bottom: 0;
     width: 260px;
-    padding: 8px;
-    overflow-y: auto;
+    overflow-y: scroll;
     background: #232f3f;
     overflow-x: hidden;
-    padding-bottom:10px;
-    padding-top: 45px;
+    position: absolute;
 }
 
 .resize-dir {
-    background: rgba(123, 126, 129, 0.3);
+    background: rgba(123, 1206, 129, 0.3);
 }
 
 .handle:hover {
@@ -326,16 +323,11 @@ body {
     display: block;
 }
 
-.head {
-    display:none;
-}
-
 .edit-box {
     display: block;
     background: #fff;
     width: 300px;
     height: 300px;
-    /*left: 100px;*/
     top: 150px;
     position: relative;
     box-sizing: border-box;
