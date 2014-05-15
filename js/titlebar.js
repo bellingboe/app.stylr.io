@@ -57,6 +57,16 @@ function addTitlebar(titlebar_name, titlebar_icon_url, titlebar_text) {
   icon.appendChild(createImage(titlebar_name + "icon", titlebar_icon_url));
   titlebar.appendChild(icon);
   
+  var btn = document.createElement("div");
+  btn.setAttribute("class", "toolbar-action action-help");
+  btn.innerHTML = "?";
+  btn.setAttribute("id", "action-help");
+  btn.onclick = function(){
+    showMessage("How to Use Stylr", "1. Use the tools on the left, once you have a layer selected.<br><br>2. You can resize each layer by selecting it, then draging any of the sides.<br><br>If you want to move the layer without changing with size, hold down CTRL when dragging the side.", 10);
+  };
+  
+  titlebar.appendChild(btn);
+  
 /*
 var twt = $("<a>")
 .attr("href", "https://twitter.com/share")
@@ -80,7 +90,7 @@ var twt = $("<a>")
                       titlebar.appendChild(closeButton);
   }
 
-  document.body.appendChild(titlebar);
+  $(".wrapper").append($(titlebar));
   
   /*var scene = createImage("scene", "");
   scene.setAttribute("class", "scene-screen");

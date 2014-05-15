@@ -48,7 +48,10 @@ window.onload = function() {
     })
     
     .on("keyup", function(ev){
-	console.log(ev);
+	
+	if (ev.keyCode == 27 && window.popupMsg) {
+	    hideMessage(window.popupDelay);
+	}
 	
         if (ev.keyCode == 17) {
 	    $("body")
@@ -551,7 +554,7 @@ window.onload = function() {
             $(".footer").fadeIn();
             $("#content").css({"position": "absolute"});
             var box = $("<div>").hide().appendTo($("#content")).fadeIn();
-	    $(".btn-get-css").fadeIn();
+	    $(".btn-get-css").appendTo($(".top-titlebar")).fadeIn();
 	    $(".head").fadeIn();
 	    
 	    layerCount++;

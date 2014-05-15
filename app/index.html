@@ -20,107 +20,118 @@
         <script src="../js/controller.js"></script>
     </head>
     <body>
-        <a href="https://twitter.com/share" class="twitter-share-button" data-url="http://app.stylr.io/app/?utm_campaign=twt" data-text="Easily turn mockups into real CSS with Stylr" data-hashtags="Stylr">Tweet</a>
-        <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
+        <div class="wrapper">
+            <a href="https://twitter.com/share" class="twitter-share-button" data-url="http://app.stylr.io/app/?utm_campaign=twt" data-text="Easily turn mockups into real CSS with Stylr" data-hashtags="Stylr">Tweet</a>
+            <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
+            
+            <span class="btn-large btn-get-css get-css">Get CSS</span>
+            
+            <div class="landing" id="page_1">
+                <div class="scene-text">Stylr</div>
+                <div class="btn-large btn-new" id="btn_new">New Workspace</div>
+                <div class="btn-large btn-gh" id="btn_gh">View Web App Source on GitHub</div>
+                <div class="btn-large btn-twt" id="btn_twt">@NerdWhoCodes on Twitter</div>
+            </div>
+            
+            <div id="content">
+                <div id="handles" class="hidddenUI">
+                    <div class="handle h-top"></div>
+                    <div class="handle h-bottom"></div>
+                    <div class="handle h-left"></div>
+                    <div class="handle h-right"></div>
+                </div>
+                
+            </div>
+            
+            <div class="tools">
+                <div class="head toolbar-head">
+                    Tools
+                </div>
+                <div class="tool-box tool-position">
+                    <span class="title">Position</span>
+                    <div class="tool-content">
+                        <div class="tool-item">
+                            X: <span class="pos-x">0</span>px <span class='btn-l btn-tool pos-add-x'>+</span><span class='btn-r btn-tool pos-sub-x'>-</span>
+                        </div>
+                        <div class="tool-item">
+                            Y: <span class="pos-y">0</span>px <span class='btn-l btn-tool pos-add-y'>+</span><span class='btn-r btn-tool pos-sub-y'>-</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="tool-box tool-size">
+                    <span class="title">Size</span>
+                    <div class="tool-content">
+                        <div class="tool-item">
+                            W: <span class="size-w">0</span>px <span class='btn-l btn-tool size-add-w'>+</span><span class='btn-r btn-tool size-sub-w'>-</span>
+                        </div>
+                        <div class="tool-item">
+                            H: <span class="size-h">0</span>px <span class='btn-l btn-tool size-add-h'>+</span><span class='btn-r btn-tool size-sub-h'>-</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="tool-box tool-bg">
+                    <span class="title">Background</span>
+                    <div class="tool-content">
+                        <div class="tool-item">
+                            <div class='bg-prev' id="color_prev"><div></div></div> <span class='bg-text'></span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="tool-box tool-bord">
+                    <span class="title">Border</span>
+                    <div class="tool-content">
+                        <div class="tool-item">
+                            Size: <span class="bord-width">0</span>px <span class='btn-l btn-tool bord-add'>+</span><span class='btn-r btn-tool bord-sub'>-</span>
+                        </div>
+                        <div class="tool-item">
+                            <div class='border-prev' id="border_color_prev"><div></div></div> <span class='bord-text'></span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="tool-box tool-shd">
+                    <span class="title">Blur</span>
+                    <div class="tool-content">
+                        <div class="tool-item">
+                            <span class="blur-width">0</span>px <span class='btn-l btn-tool blur-add'>+</span><span class='btn-r btn-tool blur-sub'>-</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="tool-box tool-shd">
+                    <span class="title">Shadow</span>
+                    <div class="tool-content">
+                        <div class="tool-item">
+                            
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="tool-box tool-corner">
+                    <span class="title">Corner Radius</span>
+                    <div class="tool-content">
+                        <div class="tool-item">
+                            <span class="corner-width">0</span>px <span class='btn-l btn-tool corner-add'>+</span><span class='btn-r btn-tool corner-sub'>-</span>
+                        </div>
+                    </div>
+                </div>
         
-        <span class="btn-large btn-get-css get-css">Get CSS</span>
-        
-        <div class="landing" id="page_1">
-            <div class="scene-text">Stylr</div>
-            <div class="btn-large btn-new" id="btn_new">New Workspace</div>
-            <div class="btn-large btn-gh" id="btn_gh">View Web App Source on GitHub</div>
-            <div class="btn-large btn-twt" id="btn_twt">@NerdWhoCodes on Twitter</div>
+            </div>
+            
+            <div class="app-by">&nbsp;</div>
         </div>
         
-        <div id="content">
-            <div id="handles" class="hidddenUI">
-                <div class="handle h-top"></div>
-                <div class="handle h-bottom"></div>
-                <div class="handle h-left"></div>
-                <div class="handle h-right"></div>
+
+        <div class="msg-bg">
+            <div class="msg-overlay">
+                <h1 class="msg-title"></h1>
+                <div class="msg-content"></div>
+                <div class="msg-bottom">Hit <strong>ESC</strong> to close window</div>
             </div>
-            
         </div>
-        
-        <div class="tools">
-            <div class="head toolbar-head">
-                Tools
-            </div>
-            <div class="tool-box tool-position">
-                <span class="title">Position</span>
-                <div class="tool-content">
-                    <div class="tool-item">
-                        X: <span class="pos-x">0</span>px <span class='btn-l btn-tool pos-add-x'>+</span><span class='btn-r btn-tool pos-sub-x'>-</span>
-                    </div>
-                    <div class="tool-item">
-                        Y: <span class="pos-y">0</span>px <span class='btn-l btn-tool pos-add-y'>+</span><span class='btn-r btn-tool pos-sub-y'>-</span>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="tool-box tool-size">
-                <span class="title">Size</span>
-                <div class="tool-content">
-                    <div class="tool-item">
-                        W: <span class="size-w">0</span>px <span class='btn-l btn-tool size-add-w'>+</span><span class='btn-r btn-tool size-sub-w'>-</span>
-                    </div>
-                    <div class="tool-item">
-                        H: <span class="size-h">0</span>px <span class='btn-l btn-tool size-add-h'>+</span><span class='btn-r btn-tool size-sub-h'>-</span>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="tool-box tool-bg">
-                <span class="title">Background</span>
-                <div class="tool-content">
-                    <div class="tool-item">
-                        <div class='bg-prev' id="color_prev"><div></div></div> <span class='bg-text'></span>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="tool-box tool-bord">
-                <span class="title">Border</span>
-                <div class="tool-content">
-                    <div class="tool-item">
-                        Size: <span class="bord-width">0</span>px <span class='btn-l btn-tool bord-add'>+</span><span class='btn-r btn-tool bord-sub'>-</span>
-                    </div>
-                    <div class="tool-item">
-                        <div class='border-prev' id="border_color_prev"><div></div></div> <span class='bord-text'></span>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="tool-box tool-shd">
-                <span class="title">Blur</span>
-                <div class="tool-content">
-                    <div class="tool-item">
-                        <span class="blur-width">0</span>px <span class='btn-l btn-tool blur-add'>+</span><span class='btn-r btn-tool blur-sub'>-</span>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="tool-box tool-shd">
-                <span class="title">Shadow</span>
-                <div class="tool-content">
-                    <div class="tool-item">
-                        
-                    </div>
-                </div>
-            </div>
-            
-            <div class="tool-box tool-corner">
-                <span class="title">Corner Radius</span>
-                <div class="tool-content">
-                    <div class="tool-item">
-                        <span class="corner-width">0</span>px <span class='btn-l btn-tool corner-add'>+</span><span class='btn-r btn-tool corner-sub'>-</span>
-                    </div>
-                </div>
-            </div>
-    
-        </div>
-        
-        <div class="app-by">&nbsp;</div>
         
         <script>
           (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){

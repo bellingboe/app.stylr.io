@@ -173,7 +173,7 @@ body {
     width: 10%;
     position: absolute;
     margin-left: 45%;
-    top: 0px;
+    top: -1px;
     font-size: 12pt;
     height: 40px;
     line-height: 40px;
@@ -409,7 +409,7 @@ body {
 .top-titlebar-text {
   position: absolute;
   left: 35px;
-  width: 80%;
+  width: 80px;
   margin-top: 6px;
   margin-bottom: 6px;
   text-align:center;
@@ -578,4 +578,117 @@ body.mode-pos-r {
     cursor: -ms-w-resize;
     cursor: -o-w-resize;
     cursor: w-resize;
+}
+
+.msg-overlay {
+    width: 30%;
+    margin-left: 35%;
+    top: -700px;
+    min-height: 60%;
+    display: none;
+    -webkit-filter: blur(0px);
+    filter: blur(0px);
+    background: #fff;
+    border-radius: 25px;
+    color: black;
+    text-align: center;
+    position: absolute;
+    padding: 20px;
+    box-shadow: 0 41px 107px rgba(0, 0, 0, 0.9);
+    margin-bottom: 35px;
+}
+
+.msg-title {
+    margin-bottom: 10px;
+}
+
+.msg-bottom {
+    text-align: center;
+    color: grey;
+    font-size: 9pt;
+    bottom: 9px;
+    position: absolute;
+    width: 88%;
+}
+
+.msg-bg {
+    position: absolute;
+    top:0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(255, 255, 255, 0.1);
+    display:none;
+    overflow-y: auto;
+}
+
+.msg-content {
+    text-align: left;
+    margin-bottom: 15px;
+}
+
+@-webkit-keyframes NAME-YOUR-ANIMATION {
+  0%   { opacity: 0; }
+  100% { opacity: 1; }
+}
+@-moz-keyframes NAME-YOUR-ANIMATION {
+  0%   { opacity: 0; }
+  100% { opacity: 1; }
+}
+@-o-keyframes NAME-YOUR-ANIMATION {
+  0%   { opacity: 0; }
+  100% { opacity: 1; }
+}
+@keyframes NAME-YOUR-ANIMATION {
+  0%   { opacity: 0; }
+  100% { opacity: 1; }
+}
+
+
+.wrapper {
+  -webkit-animation: NAME-YOUR-ANIMATION 2s 1;
+  -moz-animation:    NAME-YOUR-ANIMATION 2s 1;
+  -o-animation:      NAME-YOUR-ANIMATION 2s 1;
+  animation:         NAME-YOUR-ANIMATION 2s 1;
+  background: white;
+}
+
+/*
+.wrapper-open {
+    -webkit-transition: all 300ms;
+    transform: perspective( 600px ) rotateZ( 15deg );
+    -webkit-transform: perspective( 600px ) rotateX( 15deg );
+}
+
+.wrapper-closed {
+    -webkit-transition: all 300ms;
+    transform: perspective( 600px ) rotateZ( 0deg );
+    -webkit-transform: perspective( 600px ) rotateX( 0deg );
+}
+*/
+
+.action-help {
+    margin-left: 43%;
+}
+
+.toolbar-action {
+    display: block;
+    height: 33px;
+    width: 35px;
+    cursor: pointer;
+    text-align: center;
+    line-height: 32px;
+    position: absolute;
+    top: 0;
+    color: rgb(255, 255, 255);
+    border-right: 1px solid rgba(255, 255, 255, 0.1);
+    border-left: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.toolbar-action:hover {
+    background: rgb(37, 46, 58);
+}
+
+.toolbar-action:active {
+    box-shadow: inset 0 0 4px 0 rgba(0, 0, 0, 0.4), inset 0 4px 8px 0 rgba(0, 0, 0, 0.4);
 }
