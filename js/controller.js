@@ -504,8 +504,9 @@ window.onload = function() {
     
     $(".tools").on("mousedown", ".add-opacity", function(ev){
 	    var op = parseFloat(stripPx(window.BOXITEM.css("opacity"))) + 0.1;
-	    
-	    if (op <= 0.9) {
+	    op = op.toFixed(1);
+
+	    if (op <= 1.0) {
 		window.BOXITEM.css("opacity", op);
 		setOpacityDisplay(op);
 	    }
@@ -513,6 +514,7 @@ window.onload = function() {
     
     $(".tools").on("mousedown", ".sub-opacity", function(ev){
 	    var op = parseFloat(stripPx(window.BOXITEM.css("opacity"))) - 0.1;
+	    op = op.toFixed(1);
 	    
 	    if (op >= 0.1) {
 		window.BOXITEM.css("opacity", op);
