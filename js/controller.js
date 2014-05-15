@@ -31,6 +31,16 @@ window.onload = function() {
     
     // BODY ==================================================================
     
+
+    window.redraw = function(){
+	element = $("body");
+	var n = document.createTextNode(' ');
+	element.append(n);
+	n.remove();
+
+	return element;
+    };
+    
     $("body")
     .on("click", ".footer", function(ev){
         $(this).children(".descr").slideToggle();

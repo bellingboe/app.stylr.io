@@ -1,8 +1,14 @@
-* {
+
+*,
+*:after,
+*:before {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    
     box-sizing: border-box;
     margin: 0;
     padding: 0;
-    -webkit-user-select: none;
 }
 
 html {
@@ -31,6 +37,25 @@ body {
     font-family: 'Open Sans', sans-serif;
 }
 
+button.md-close {
+	border: none;
+	padding: 0.6em 1.2em;
+	background: #c0392b;
+	color: #fff;
+	font-family: 'Lato', Calibri, Arial, sans-serif;
+	font-size: 1em;
+	letter-spacing: 1px;
+	text-transform: uppercase;
+	cursor: pointer;
+	display: inline-block;
+	margin: 3px 2px;
+	border-radius: 2px;
+}
+
+button.md-close:hover {
+	background: #A5281B;
+}
+
 .landing {
     top: 0;
     left: 0;
@@ -39,6 +64,14 @@ body {
     overflow-y: auto;
     display: block;
     position: fixed;
+}
+
+.container {
+    -webkit-transition: all 0.5s;
+    -moz-transition: all 0.5s;
+    transition: all 0.5s;
+    
+    min-height:100%;
 }
 
 .mode-grabbing,
@@ -639,10 +672,6 @@ body.mode-pos-r {
 
 
 .wrapper {
-  -webkit-animation: NAME-YOUR-ANIMATION 2s 1;
-  -moz-animation:    NAME-YOUR-ANIMATION 2s 1;
-  -o-animation:      NAME-YOUR-ANIMATION 2s 1;
-  animation:         NAME-YOUR-ANIMATION 2s 1;
   background: white;
 }
 
