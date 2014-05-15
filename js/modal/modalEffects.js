@@ -25,6 +25,9 @@ var ModalEffects = (function() {
 				if( hasPerspective ) {
 					classie.remove( document.documentElement, 'md-perspective' );
 				}
+				
+				$(".tools").hide().css({"opacity":"0.1"}).css({"position":"absolute"}).css({"opacity":"1.0"}).show();
+				$("#content").hide().css({"opacity":"0.1"}).css({"position":"absolute"}).css({"opacity":"1.0"}).show();
 			}
 
 			function removeModalHandler() {
@@ -46,9 +49,6 @@ var ModalEffects = (function() {
 			close.addEventListener( 'click', function( ev ) {
 				ev.stopPropagation();
 				removeModalHandler();
-				
-				$(".tools").css({"position":"absolute"}).css({"position":"absolute"});
-				$("#content").css({"position":"absolute"}).css({"position":"absolute"});
 			});
 
 		} );
