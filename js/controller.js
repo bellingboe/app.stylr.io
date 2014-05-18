@@ -41,9 +41,19 @@ window.onload = function() {
 	return element;
     };
     
+    $(".dial").knob({
+		     'change' : function (v) { console.log(v); }
+		    });
+    
     $("body")
     .on("click", ".footer", function(ev){
         $(this).children(".descr").slideToggle();
+    })
+    
+    .on("click", ".msg-bg", function(ev){
+	if (window.popupMsg) {
+	    hideMessage(window.popupDelay);
+	}
     })
     
     .on("keydown", function(ev){

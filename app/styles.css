@@ -209,9 +209,9 @@ button.md-close:hover {
     position: absolute;
     margin-left: 45%;
     top: -41px;
-    font-size: 12pt;
-    height: 40px;
-    line-height: 40px;
+    font-size: 10pt;
+    height: 33px;
+    line-height: 33px;
 }
 
 .app-by {
@@ -643,9 +643,10 @@ body.mode-pos-r {
     left: 0;
     right: 0;
     bottom: 0;
-    background: rgba(255, 255, 255, 0.1);
-    display:none;
+    background: rgba(0, 0, 0, 0.6);
+    display: none;
     overflow-y: auto;
+    z-index: 99;
 }
 
 .msg-content {
@@ -748,4 +749,12 @@ body.mode-pos-r {
 
 .css-attr {
     color: maroon;
+}
+
+.toolbar-action {
+    display: none;
+}
+
+.app-title .toolbar-action {
+    display: block;
 }

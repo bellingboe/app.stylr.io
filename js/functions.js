@@ -14,24 +14,11 @@ function showMessage(title, msg, dur) {
         $("<div>").addClass("msg-bg").appendTo($("body"));
         $("<div>").addClass("msg-overlay").appendTo($("body"));
     }
-    
-    $(".msg-bg")
-        .fadeIn();
         
-    $(".msg-overlay")
-        .show()
-        .find(".msg-title")
-            .html(title)
-        .end()
-        .find(".msg-content")
-            .html(msg)
-        .end()
-        .animate({"top":"45px"}, {queue: false});
-    
+    /*
     $({blurRadius: 0}).animate({blurRadius: dur}, {
         duration: 1000,
         queue: false,
-        easing: 'swing',
         step: function() {
             $(".wrapper").css({
                 "-webkit-filter": "blur("+this.blurRadius+"px)",
@@ -42,19 +29,31 @@ function showMessage(title, msg, dur) {
             window.popupMsg = true;
         }
     });
+    */
+    
+    $(".msg-bg")
+        .fadeIn({duration: 400, queue: false});
+    
+    $(".msg-overlay")
+        .show()
+        .find(".msg-title")
+            .html(title)
+        .end()
+        .find(".msg-content")
+            .html(msg)
+        .end()
+        .animate({"top":"45px", "opacity":"1.0"}, {duration: 400, queue: false});
+    
+        window.popupMsg = true;
+    
 }
 
 function hideMessage(dur) {
-    $(".msg-bg")
-       .fadeOut();
     
-   $(".msg-overlay")
-       .animate({"top":"-700px"}, {queue: false});
-             
-    $({blurRadius: dur}).animate({blurRadius: 1}, {
+    /*
+    $({blurRadius: dur}).animate({blurRadius: 0}, {
         duration: 1000,
         queue: false,
-        easing: 'swing',
         step: function() {
             $(".wrapper").css({
                 "-webkit-filter": "blur("+this.blurRadius+"px)",
@@ -66,9 +65,17 @@ function hideMessage(dur) {
                 .css({
                     "-webkit-filter": "blur(0px)",
                     "filter": "blur(0px)"
-                });
-                
+                }); 
             window.popupMsg = false;
         }
     });
+    */
+    
+     $(".msg-bg")
+        .fadeOut({duration: 400, queue: false});
+    
+    $(".msg-overlay")
+        .animate({"top":"-700px", "opacity":"0"}, {duration: 400, queue: false});
+        
+        window.popupMsg = false;
 }
