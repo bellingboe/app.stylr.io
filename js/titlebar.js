@@ -62,7 +62,7 @@ function addTitlebar(titlebar_name, titlebar_icon_url, titlebar_text) {
   btn.innerHTML = "?";
   btn.setAttribute("id", "action-help");
   btn.onclick = function(){
-    showMessage("How to Use Stylr", "1. Use the tools on the left, once you have a layer selected.<br><br>2. You can resize each layer by selecting it, then draging any of the sides.<br><br>If you want to move the layer without changing with size, hold down CTRL when dragging the side.", 10);
+    showMessage("How to Use Stylr", "1. Use the tools on the left, once you have a layer selected.<br><br>2. You can resize each layer by selecting it, then draging any of the sides.<br><br>If you want to move the layer without changing with size, hold down CTRL when dragging the side.", 3);
   };
   
   titlebar.appendChild(btn);
@@ -72,7 +72,7 @@ function addTitlebar(titlebar_name, titlebar_icon_url, titlebar_text) {
   btn2.innerHTML = "View on GitHub";
   btn2.setAttribute("id", "action-gh");
   btn2.onclick = function(){
-    showMessage("Help Make Stylr Better", "We'd LOVE it if you'd help (me) build this project! It's simple. The repo is public, andyone can see and contrbute to it.<br><br> <a href='https://github.com/bellingboe/app.stylr.io' target='_blank'>View Source on GitHub</a>", 10);
+    showMessage("Help Make Stylr Better", "We'd LOVE it if you'd help (me) build this project! It's simple. The repo is public, andyone can see and contrbute to it.<br><br> <a href='https://github.com/bellingboe/app.stylr.io' target='_blank'>View Source on GitHub</a>", 3);
   };
   
   titlebar.appendChild(btn2);
