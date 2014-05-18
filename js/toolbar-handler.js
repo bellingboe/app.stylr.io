@@ -196,8 +196,7 @@ function selectLayer(layer) {
     if (!layer.attr("id")) {
         layer.attr("id", "layer_"+layerCount);
     }
-    
-    layer.attr("id", "layer_"+layerCount);
+
     layer.attr("data-active", "1");
 
     //setTransformHandles(true);
