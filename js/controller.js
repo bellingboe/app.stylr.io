@@ -42,6 +42,11 @@ window.onload = function() {
         $(this).children(".descr").slideToggle();
     })
     
+    .on("click", ".msg-overlay", function(ev){
+	ev.stopPropagation();
+	return;
+    })
+    
     .on("click", ".msg-bg", function(ev){
 	if (window.popupMsg) {
 	    hideMessage(window.popupDelay);
@@ -587,9 +592,6 @@ window.onload = function() {
         $(".top-titlebar").addClass("app-title");
         $(".top-titlebar-icon").addClass("app-title");
         
-        $(".scene-text").fadeOut();
-        $(".scene-disc").fadeOut();
-        $(".app-by").fadeOut();
         $(".scene-text").fadeOut();
         $(".scene-disc").fadeOut();
         $(".app-by").fadeOut();
