@@ -31,19 +31,26 @@ window.onload = function() {
     
     // BODY ==================================================================
     
-
-    window.redraw = function(){
-	element = $("body");
-	var n = document.createTextNode(' ');
-	element.append(n);
-	n.remove();
-
-	return element;
-    };
+    $(".dial")
+    .knob({
+	"change": function (v) {
+	}
+    });
     
     $("body")
     .on("click", ".footer", function(ev){
         $(this).children(".descr").slideToggle();
+    })
+    
+    .on("click", ".msg-overlay", function(ev){
+	ev.stopPropagation();
+	return;
+    })
+    
+    .on("click", ".msg-bg", function(ev){
+	if (window.popupMsg) {
+	    hideMessage(window.popupDelay);
+	}
     })
     
     .on("keydown", function(ev){
@@ -588,9 +595,6 @@ window.onload = function() {
         $(".scene-text").fadeOut();
         $(".scene-disc").fadeOut();
         $(".app-by").fadeOut();
-        $(".scene-text").fadeOut();
-        $(".scene-disc").fadeOut();
-        $(".app-by").fadeOut();
         $(".tools").fadeIn();
         $("#scene").fadeOut();
         
@@ -604,13 +608,17 @@ window.onload = function() {
 	$(".btn-get-css")
 	    .animate({"top": "0px"}, {queue: false});
 
-
         $(".tools").animate({"left": "0px"}, {queue: false, complete: function(){
             $(".footer").fadeIn();
             $("#content").css({"position": "absolute"});
-            var box = $("<div>").hide().appendTo($("#content")).fadeIn();
+            var box = $("<div>").hide().appendTo($("#content")).fadeIn(100, function(){
+	    
+		var op = parseFloat(stripPx(window.BOXITEM.css("opacity")));
+		op = op.toFixed(1);
+		setOpacityDisplay(op);
+	    
+	    });
 	    $(".btn-get-css").appendTo($(".top-titlebar")).fadeIn();
-	    //$(".head").fadeIn();
 	    
 	    layerCount++;
             setActiveBox(box);
@@ -637,13 +645,13 @@ window.onload = function() {
     //$(".top-titlebar-close-button > img").attr("src", "button_close_hover.png");
     
     $('#color_prev').ColorPicker({
-	color: '#fff',
+	color: '#ffffff',
 	onShow: function (colpkr) {
-		$(colpkr).fadeIn(500);
+		$(colpkr).fadeIn(100);
 		return false;
 	},
 	onHide: function (colpkr) {
-		$(colpkr).fadeOut(500);
+		$(colpkr).fadeOut(100);
 		return false;
 	},
 	onChange: function (hsb, hex, rgb) {
@@ -652,13 +660,13 @@ window.onload = function() {
     });
     
     $('#border_color_prev').ColorPicker({
-	color: '#000',
+	color: '#000000',
 	onShow: function (colpkr) {
-		$(colpkr).fadeIn(500);
+		$(colpkr).fadeIn(100);
 		return false;
 	},
 	onHide: function (colpkr) {
-		$(colpkr).fadeOut(500);
+		$(colpkr).fadeOut(100);
 		return false;
 	},
 	onChange: function (hsb, hex, rgb) {

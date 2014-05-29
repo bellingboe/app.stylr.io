@@ -192,7 +192,11 @@ function selectLayer(layer) {
     layer.addClass("is-selected");
     layer.attr("data-active", "1");
     layer.addClass("edit-box");
-    layer.attr("id", "layer_"+layerCount);
+    
+    if (!layer.attr("id")) {
+        layer.attr("id", "layer_"+layerCount);
+    }
+
     layer.attr("data-active", "1");
 
     //setTransformHandles(true);

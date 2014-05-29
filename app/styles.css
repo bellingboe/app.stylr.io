@@ -209,9 +209,9 @@ button.md-close:hover {
     position: absolute;
     margin-left: 45%;
     top: -41px;
-    font-size: 12pt;
-    height: 40px;
-    line-height: 40px;
+    font-size: 10pt;
+    height: 33px;
+    line-height: 33px;
 }
 
 .app-by {
@@ -609,11 +609,9 @@ body.mode-pos-r {
 .msg-overlay {
     width: 30%;
     margin-left: 35%;
-    top: -700px;
+    top: -70px;
     min-height: 300px;
     display: none;
-    -webkit-filter: blur(0px);
-    filter: blur(0px);
     background: #fff;
     border-radius: 6px;
     color: black;
@@ -647,6 +645,7 @@ body.mode-pos-r {
     background: rgba(0, 0, 0, 0.1);
     display:none;
     overflow-y: auto;
+    z-index: 99;
 }
 
 .msg-content {
@@ -749,4 +748,12 @@ body.mode-pos-r {
 
 .css-attr {
     color: maroon;
+}
+
+.toolbar-action {
+    display: none;
+}
+
+.app-title .toolbar-action {
+    display: block;
 }

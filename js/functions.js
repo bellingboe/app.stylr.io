@@ -8,13 +8,34 @@ function stripPx(v) {
 
 function showMessage(title, msg, dur) {
     window.popupDelay = dur;
+    
+    if ($(".msg-overlay").length == 0) {
+        $("<div>").addClass("msg-bg").appendTo($("body"));
+        $("<div>").addClass("msg-overlay").appendTo($("body"));
+    }
 
-    $(".msg-title").html(title)
-    $(".msg-content").html(msg)
-        
-    $("#fx-btn").trigger("click");
+    $(".msg-bg")
+        .fadeIn({duration: 400, queue: false});
+    
+    $(".msg-overlay")
+        .show()
+        .find(".msg-title")
+            .html(title)
+        .end()
+        .find(".msg-content")
+            .html(msg)
+        .end()
+        .animate({"top":"45px", "opacity":"1.0"}, {duration: 400, queue: false});
+    
+        window.popupMsg = true;
 }
 
 function hideMessage(dur) {
-
+     $(".msg-bg")
+        .fadeOut({duration: 400, queue: false});
+    
+    $(".msg-overlay")
+        .animate({"top":"-70px", "opacity":"0"}, {duration: 400, queue: false});
+        
+        window.popupMsg = false;
 }

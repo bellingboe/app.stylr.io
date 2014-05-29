@@ -24,25 +24,12 @@
         
         <!--
         <link rel="stylesheet" type="text/css" href="default.css" />
-        -->
         <link rel="stylesheet" type="text/css" href="component.css" />
         <script src="../js/modal/modernizr.custom.js"></script>
+        -->
+        <script src="../js/jquery.knob.js"></script>
     </head>
     <body>
-        
-        <div class="md-modal md-effect-5" id="modal-5">
-            <div class="md-content">
-                <h3 class="msg-title"></h3>
-                <div>
-                    <div class="msg-content"></div>
-                    <button class="md-close">[Close]</button>
-                </div>
-            </div>
-        </div>
-
-        <button class="md-trigger md-setperspective" id="fx-btn" style="display: none;" data-modal="modal-5"></button>
-        
-        <div class="md-overlay"></div>
     
         <div class="wrapper container">
             <a href="https://twitter.com/share" class="twitter-share-button" data-url="http://app.stylr.io/app/?utm_campaign=twt" data-text="Easily turn mockups into real CSS with Stylr" data-hashtags="Stylr">Tweet</a>
@@ -142,6 +129,8 @@
                     <div class="tool-content">
                         <div class="tool-item">
                             
+                            <input type="text" value="0" class="dial" data-min="0" data-max="360" data-width="100">
+                            
                         </div>
                     </div>
                 </div>
@@ -159,7 +148,7 @@
             
             <div class="app-by">&nbsp;</div>
         </div>
-
+        
         <div class="msg-bg">
             <div class="msg-overlay">
                 <h1 class="msg-title"></h1>
@@ -180,19 +169,6 @@
           ga('set', '&uid', window.user.uid);
           ga('send', 'pageview');
         </script>
-
-        <!-- classie.js by @desandro: https://github.com/desandro/classie -->
-        <script src="../js/modal/classie.js"></script>
-        <script src="../js/modal/modalEffects.js"></script>
-        
-        <!-- for the blur effect -->
-        <!-- by @derSchepp https://github.com/Schepp/CSS-Filters-Polyfill -->
-        <script>
-                // this is important for IEs
-                var polyfilter_scriptpath = '/../js/modal/';
-        </script>
-        <script src="../js/modal/cssParser.js"></script>
-        <script src="../js/modal/css-filters-polyfill.js"></script>
 
     </body>
 </html>
